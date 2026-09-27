@@ -355,7 +355,7 @@ function SettingsPanel({ form, jev, notifySuccess, t }: PanelProps) {
         {!featureLoading && !featureError && features.length === 0 && <p className={css.empty}>{t('noFeatures')}</p>}
         <div className={css.list}>{features.map(feature => {
           const enabled = current?.features?.[feature.id] ?? feature.enabled
-          return <div className={css.feature} key={feature.id}><div className={css.featureBody}><span className={css.featureTitle}>{feature.name}</span><span className={css.description}>{feature.description}</span>{feature.settingsDescription && <span className={css.hint}>{feature.settingsDescription}</span>}</div><Switch checked={enabled} label={`${enabled ? t('disable') : t('enable')} ${feature.name}`} disabled={!snapshot.writable || featureBusy !== ''} onChange={next => { void toggleFeature(feature.id, next) }} /></div>
+          return <div className={css.feature} key={feature.id}><div className={css.featureBody}><span className={css.featureTitle}>{feature.id === 'shared-findings' ? t('sharedFindingsName') : feature.name}</span><span className={css.description}>{feature.id === 'shared-findings' ? t('sharedFindingsDescription') : feature.description}</span>{feature.settingsDescription && <span className={css.hint}>{feature.settingsDescription}</span>}</div><Switch checked={enabled} label={`${enabled ? t('disable') : t('enable')} ${feature.id === 'shared-findings' ? t('sharedFindingsName') : feature.name}`} disabled={!snapshot.writable || featureBusy !== ''} onChange={next => { void toggleFeature(feature.id, next) }} /></div>
         })}</div>
       </section>
     </div>
@@ -430,7 +430,7 @@ function RecordsPanel({ jev, t }: RecordsProps) {
   return <div className={css.panel}>
     <section className={css.section} aria-label={t('records')}>
       <div className={css.filters}>
-        <label className={css.field}><span>{t('feature')}</span><input list="jev-feature-suggestions" placeholder={t('allFeatures')} value={featureId} onChange={event => { setFeatureId(event.target.value) }} /><datalist id="jev-feature-suggestions">{features.map(feature => <option value={feature.id} key={feature.id} label={feature.name} />)}</datalist></label>
+        <label className={css.field}><span>{t('feature')}</span><input list="jev-feature-suggestions" placeholder={t('allFeatures')} value={featureId} onChange={event => { setFeatureId(event.target.value) }} /><datalist id="jev-feature-suggestions">{features.map(feature => <option value={feature.id} key={feature.id} label={feature.id === 'shared-findings' ? t('sharedFindingsName') : feature.name} />)}</datalist></label>
         <label className={css.field}><span>{t('status')}</span><select value={status} onChange={event => { setStatus(event.target.value) }}><option value="">{t('allStatuses')}</option>{STATUSES.map(value => <option value={value} key={value}>{statusLabel(value, t)}</option>)}</select></label>
         <label className={css.field}><span>{t('sessionId')}</span><input value={sessionId} onChange={event => { setSessionId(event.target.value) }} /></label>
       </div>

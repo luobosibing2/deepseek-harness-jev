@@ -4,3 +4,5 @@
       name: '@dsh-jev/plugin'
     - id: jev-selection
       name: '@dsh-jev/plugin/selection'
+    - id: jev-shared-findings
+      name: '@dsh-jev/plugin/shared-findings'

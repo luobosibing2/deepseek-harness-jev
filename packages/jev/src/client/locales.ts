@@ -2,6 +2,7 @@
 
 /** Dictionary keys rendered by the Jev page. */
 export type JevLocaleKey =
+  | 'sharedFindingsName' | 'sharedFindingsDescription'
   | 'tabs' | 'settings' | 'records' | 'connection' | 'features' | 'noFeatures'
   | 'baseUrl' | 'model' | 'credentialRef' | 'timeoutMs' | 'apiKey' | 'apiKeyHint'
   | 'configured' | 'missing' | 'readOnly' | 'unavailable' | 'loading'
@@ -21,6 +22,7 @@ export type JevLocaleKey =
 
 /** English copy. */
 export const en: Record<JevLocaleKey, string> = {
+  sharedFindingsName: 'Shared finding corrections', sharedFindingsDescription: 'Compare already shared reports and messages, correct actual recipients, and ask the root to verify conflicts.',
   tabs: 'Jev pages', settings: 'Settings and features', records: 'Decision records',
   connection: 'Shared connection', features: 'Features', noFeatures: 'No features are registered yet.',
   baseUrl: 'Service address', model: 'Model', credentialRef: 'Credential reference', timeoutMs: 'Timeout (ms)',
@@ -43,6 +45,7 @@ export const en: Record<JevLocaleKey, string> = {
 
 /** Simplified Chinese copy. */
 export const zh: Record<JevLocaleKey, string> = {
+  sharedFindingsName: '共享发现纠正', sharedFindingsDescription: '比较已共享报告和消息，纠正实际接收者，并将冲突交给主代理核实。',
   tabs: 'Jev 页面', settings: '设置与功能', records: '判断记录',
   connection: '共用连接', features: '功能目录', noFeatures: '当前没有登记的功能',
   baseUrl: '服务地址', model: '模型', credentialRef: '凭据引用', timeoutMs: '超时（毫秒）',
