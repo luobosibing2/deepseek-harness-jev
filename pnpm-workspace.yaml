@@ -3,3 +3,4 @@ packages:
   - '!packages/typert-protocol-reference'
 allowBuilds:
   esbuild: true
+  koffi: false

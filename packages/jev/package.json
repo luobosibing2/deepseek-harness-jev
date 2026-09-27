@@ -6,14 +6,36 @@
   "main": "./lib/index.js",
   "types": "./lib/types/index.d.ts",
   "exports": {
-    ".": { "types": "./lib/types/index.d.ts", "default": "./lib/index.js" },
-    "./selection": { "types": "./lib/types/selection.d.ts", "default": "./lib/selection.js" },
-    "./types": { "types": "./lib/types/types.d.ts", "default": "./lib/types/types.js" },
-    "./remote": { "types": "./lib/typert.remote-client.d.ts", "default": "./lib/typert.remote-client.js" },
-    "./typert": { "types": "./lib/typert.host.d.ts", "default": "./lib/typert.host.js" },
-    "./client": { "types": "./lib/types/client/index.d.ts", "default": "./lib/client.js" },
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./selection": {
+      "types": "./lib/types/selection.d.ts",
+      "default": "./lib/selection.js"
+    },
+    "./types": {
+      "types": "./lib/types/types.d.ts",
+      "default": "./lib/types/types.js"
+    },
+    "./remote": {
+      "types": "./lib/typert.remote-client.d.ts",
+      "default": "./lib/typert.remote-client.js"
+    },
+    "./typert": {
+      "types": "./lib/typert.host.d.ts",
+      "default": "./lib/typert.host.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
     "./cordis.patch.yml": "./cordis.patch.yml",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./interjection": {
+      "types": "./lib/types/interjection.d.ts",
+      "default": "./lib/interjection.js"
+    }
   },
   "dsh": {
     "client": {
@@ -28,7 +50,9 @@
         "@deepseek-ai/dsh-client-ui-layout"
       ]
     },
-    "bundle": { "patch": "./cordis.patch.yml" }
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "4.0.4",
@@ -55,9 +79,15 @@
     "@deepseek-ai/dsh-typert-protocol": "0.1.7-rc.2",
     "@deepseek-ai/dsh-user-questions": "0.1.7-rc.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "@deepseek-ai/dsh-goal": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-session": "0.1.7-rc.2"
   },
   "devDependencies": {
+    "@deepseek-ai/dsh-agent-loop": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-session-persistence": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-session-persistence-jsonl": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-session-projection": "0.1.7-rc.2",
     "@deepseek-ai/cordis": "4.0.4",
     "@deepseek-ai/cosmokit": "1.8.5",
     "@deepseek-ai/dsh-agent": "0.1.7-rc.2",
@@ -90,7 +120,11 @@
     "@deepseek-ai/dsh-typert-protocol": "0.1.7-rc.2",
     "@deepseek-ai/dsh-user-questions": "0.1.7-rc.2",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "@deepseek-ai/dsh-goal": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-goal-round-driver": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-tool-goal": "0.1.7-rc.2",
+    "@deepseek-ai/cordis-plugin-loader": "1.0.5"
   },
   "files": [
     "lib/*.js",

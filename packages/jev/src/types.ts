@@ -73,6 +73,7 @@ export interface JevRecordDetail extends JevRecordSummary {
   link: JevOperationLink
   attemptRecords: readonly JevAttemptRecord[]
   receipts: readonly JevActionReceipt[]
+  failure?: { code: string; message: string }
 }
 
 export interface JevRecordFilter {

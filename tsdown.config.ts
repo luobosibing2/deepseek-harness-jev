@@ -1,7 +1,7 @@
 import { defineConfig } from 'tsdown'
 
 export default defineConfig({
-  entry: ['packages/jev/lib/types/index.js', 'packages/jev/lib/types/selection.js'],
+  entry: ['packages/jev/lib/types/index.js', 'packages/jev/lib/types/selection.js', 'packages/jev/lib/types/interjection.js'],
   outDir: 'packages/jev/lib',
   format: ['esm'],
   platform: 'node',
