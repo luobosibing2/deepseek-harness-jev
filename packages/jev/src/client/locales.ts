@@ -8,6 +8,7 @@ export type JevLocaleKey =
   | 'saveConnection' | 'saveFirst' | 'saving' | 'saveFailed' | 'saveSuccess' | 'invalidTimeout'
   | 'selectionCounts' | 'skillSummaryCount' | 'fileRankingMaximum' | 'rankedPathCount'
   | 'selectionCountsHint' | 'selectionCountInvalid' | 'saveSelectionCounts' | 'selectionCountSaved' | 'selectionCountSaveFailed'
+  | 'evidenceChars' | 'supervisionCounts' | 'driftInterval' | 'noProgressRounds' | 'supervisionCountsHint' | 'supervisionCountInvalid' | 'saveSupervisionCounts' | 'supervisionCountSaved' | 'supervisionCountSaveFailed'
   | 'replaceKey' | 'saveKey' | 'keySaved' | 'keySaveFailed' | 'testConnection'
   | 'testing' | 'testSucceeded' | 'testFailed' | 'latency' | 'enable' | 'disable' | 'refreshFeatures'
   | 'featureSaveFailed' | 'featureLoadFailed' | 'retry' | 'allFeatures'
@@ -30,6 +31,7 @@ export const en: Record<JevLocaleKey, string> = {
   selectionCounts: 'Selection counts', skillSummaryCount: 'Skill summaries shown', fileRankingMaximum: 'Maximum glob files for Jev ranking', rankedPathCount: 'Ranked paths shown',
   selectionCountsHint: 'If glob finds more files than the ranking maximum, Jev is skipped and the original glob result is returned.',
   selectionCountInvalid: 'Enter a positive whole number.', saveSelectionCounts: 'Save selection counts', selectionCountSaved: 'Selection counts saved.', selectionCountSaveFailed: 'Could not save selection counts.',
+  evidenceChars: 'Evidence character budget', supervisionCounts: 'Supervision counts', driftInterval: 'Completed model steps between drift checks', noProgressRounds: 'Consecutive goal rounds without progress', supervisionCountsHint: 'All three supervision features are independent and disabled by default. Native goal round limits still apply.', supervisionCountInvalid: 'Enter a positive whole number.', saveSupervisionCounts: 'Save supervision counts', supervisionCountSaved: 'Supervision counts saved.', supervisionCountSaveFailed: 'Could not save supervision counts.',
   replaceKey: 'Replace key', saveKey: 'Save key', keySaved: 'Key saved.', keySaveFailed: 'Could not save the key.',
   testConnection: 'Test connection', testing: 'Testing…', testSucceeded: 'Connection test passed.', testFailed: 'Connection test failed.', latency: 'Latency',
   enable: 'Enable', disable: 'Disable', refreshFeatures: 'Refresh features', featureSaveFailed: 'Could not change this feature.', featureLoadFailed: 'Could not load features.', retry: 'Retry',
@@ -52,6 +54,7 @@ export const zh: Record<JevLocaleKey, string> = {
   selectionCounts: '筛选数量', skillSummaryCount: '展示的技能摘要数', fileRankingMaximum: 'Jev 排序最大文件数', rankedPathCount: '展示的已排序路径数',
   selectionCountsHint: 'glob 匹配文件数超过排序上限时，跳过 Jev，直接返回原 glob 结果',
   selectionCountInvalid: '请输入正整数', saveSelectionCounts: '保存筛选数量', selectionCountSaved: '筛选数量已保存', selectionCountSaveFailed: '无法保存筛选数量',
+  evidenceChars: '已有证据字符预算', supervisionCounts: '执行监督次数', driftInterval: '跑偏检查间隔（已完成模型步骤）', noProgressRounds: '连续无进展目标轮数', supervisionCountsHint: '三项监督功能独立开关，默认关闭；目标总轮数仍遵守原生上限', supervisionCountInvalid: '请输入正整数', saveSupervisionCounts: '保存监督次数', supervisionCountSaved: '监督次数已保存', supervisionCountSaveFailed: '无法保存监督次数',
   replaceKey: '替换密钥', saveKey: '保存密钥', keySaved: '密钥已保存', keySaveFailed: '无法保存密钥',
   testConnection: '测试连接', testing: '测试中…', testSucceeded: '连接测试通过', testFailed: '连接测试失败', latency: '耗时',
   enable: '启用', disable: '关闭', refreshFeatures: '刷新功能', featureSaveFailed: '无法修改此功能', featureLoadFailed: '无法加载功能目录', retry: '重试',

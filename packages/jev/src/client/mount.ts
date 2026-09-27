@@ -10,6 +10,7 @@ import type {} from '@deepseek-ai/dsh-client-ui-settings/client'
 import type {} from '@deepseek-ai/dsh-client-ui-layout/client'
 import type {} from '@dsh-jev/plugin/remote'
 import { createSnapshotStore } from '@deepseek-ai/dsh-client-store'
+import type { SupervisionConfigValues } from '../supervision-types.ts'
 import type { SelectionConfigValues } from '../selection-types.ts'
 import { JevPage, type JevConfigValues, type JevPageFace } from './JevPage.tsx'
 import { JevToast, type JevToastMessage } from './JevToast.tsx'
@@ -35,11 +36,12 @@ function registerUi(ctx: Context): void {
   ctx.effect(() => ctx.locale.register(NS, { zh, en }))
   const form = ctx.configForms.get<JevConfigValues>(ENTRY)
   const selectionForm = ctx.configForms.get<SelectionConfigValues>(SELECTION_ENTRY)
+  const supervisionForm = ctx.configForms.get<SupervisionConfigValues>('jev-supervision')
   const toast = createSnapshotStore<JevToastMessage | null>(null)
   let sequence = 0
   const dismiss = () => { toast.set(null) }
   const notifySuccess = (message: string) => { toast.set({ sequence: ++sequence, text: message }) }
-  const face: JevPageFace = { form, selectionForm, jev: jevPageRemote(ctx.remote.jev), notifySuccess }
+  const face: JevPageFace = { form, selectionForm, supervisionForm, jev: jevPageRemote(ctx.remote.jev), notifySuccess }
   ctx.slots.inject('shell.overlay', () => ctx.slots.register({
     name: 'shell.overlay', id: 'jev.feedback', inject: () => ({ hooks: { jevToast: toast }, dismiss }),
   }, JevToast))

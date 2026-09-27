@@ -8,6 +8,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import type { ConfigForm, ConfigFormSnapshot } from '@deepseek-ai/dsh-client-ui-settings/client'
 import { JevPage, type JevConfigValues, type JevPageRemote } from '../src/client/JevPage.tsx'
 import { en, zh, type JevLocaleKey } from '../src/client/locales.ts'
+import type { SupervisionConfigValues } from '../src/supervision-types.ts'
 import type { SelectionConfigValues } from '../src/selection-types.ts'
 import type { JevRecordDetail, JevRecordSummary } from '../src/types.ts'
 
@@ -80,6 +81,38 @@ function selectionFormStub(options: { accept?: boolean; initial?: SelectionConfi
   return {
     form, mutate,
     load: (value: SelectionConfigValues) => { snapshot = { ...snapshot, status: 'ready', value }; publish() },
+    getValue: () => snapshot.value,
+  }
+}
+
+function supervisionFormStub(options: { accept?: boolean; initial?: SupervisionConfigValues; loading?: boolean } = {}) {
+  let snapshot: ConfigFormSnapshot<SupervisionConfigValues> = {
+    status: options.loading ? 'loading' : 'ready',
+    value: options.loading ? undefined : options.initial ?? { driftInterval: 6, noProgressRounds: 3, evidenceChars: 24000 },
+    base: {}, user: {}, revision: 4, writable: true, mode: 'host',
+  }
+  const listeners = new Set<() => void>()
+  const publish = () => { for (const listener of listeners) listener() }
+  const mutate = vi.fn(async (ops: readonly { op: string; path: readonly string[]; value?: unknown }[], expectedRevision?: number) => {
+    if (options.accept === false || expectedRevision !== snapshot.revision || snapshot.value === undefined) return false
+    const value = { ...snapshot.value }
+    for (const op of ops) {
+      if (op.op === 'set') Object.assign(value, { [op.path[0]!]: op.value })
+    }
+    snapshot = { ...snapshot, value, revision: snapshot.revision! + 1 }
+    publish()
+    return true
+  })
+  const form: ConfigForm<SupervisionConfigValues> = {
+    getSnapshot: () => snapshot,
+    subscribe: listener => { listeners.add(listener); return () => { listeners.delete(listener) } },
+    mutate,
+    set: async () => false,
+    unset: async () => false,
+  }
+  return {
+    form, mutate,
+    load: (value: SupervisionConfigValues) => { snapshot = { ...snapshot, status: 'ready', value }; publish() },
     getValue: () => snapshot.value,
   }
 }
@@ -310,5 +343,36 @@ describe('Jev selection counts', () => {
     expect(publicForm.form.getSnapshot().value?.baseUrl).toBe('https://example.invalid')
     expect(publicForm.form.getSnapshot().value?.features.example).toBe(true)
     expect(publicForm.mutate).toHaveBeenCalledTimes(1)
+  })
+})
+
+
+describe('Jev supervision settings', () => {
+  it('toggles one feature independently, validates counts, and reloads accepted profile values', async () => {
+    const { form } = formStub()
+    const counts = supervisionFormStub()
+    const jev = remoteStub()
+    jev.listFeatures = vi.fn(async () => ['drift-monitoring', 'completion-check', 'goal-supervision'].map(id => ({ id, name: id, description: id, enabled: false })))
+    const draw = () => render(<JevPage view="page" form={form} supervisionForm={counts.form} jev={jev} notifySuccess={() => {}} t={(key: JevLocaleKey) => en[key]} />)
+    const mounted = draw()
+    expect((await screen.findAllByRole('switch')).every(element => element.getAttribute('aria-checked') === 'false')).toBe(true)
+    fireEvent.click(screen.getByRole('switch', { name: 'Enable completion-check' }))
+    await waitFor(() => expect(form.getSnapshot().value?.features).toEqual({ 'completion-check': true }))
+    expect(screen.getByRole('switch', { name: 'Enable drift-monitoring' }).getAttribute('aria-checked')).toBe('false')
+    expect(screen.getByRole('switch', { name: 'Enable goal-supervision' }).getAttribute('aria-checked')).toBe('false')
+    expect((screen.getByLabelText(en.driftInterval) as HTMLInputElement).value).toBe('6')
+    expect((screen.getByLabelText(en.noProgressRounds) as HTMLInputElement).value).toBe('3')
+    fireEvent.change(screen.getByLabelText(en.driftInterval), { target: { value: '0' } })
+    fireEvent.click(screen.getByRole('button', { name: en.saveSupervisionCounts }))
+    expect(await screen.findByRole('alert')).toBeTruthy()
+    expect(counts.mutate).not.toHaveBeenCalled()
+    fireEvent.change(screen.getByLabelText(en.driftInterval), { target: { value: '9' } })
+    fireEvent.change(screen.getByLabelText(en.noProgressRounds), { target: { value: '4' } })
+    fireEvent.click(screen.getByRole('button', { name: en.saveSupervisionCounts }))
+    await waitFor(() => expect(counts.getValue()).toEqual({ driftInterval: 9, noProgressRounds: 4, evidenceChars: 24000 }))
+    mounted.unmount(); draw()
+    expect((screen.getByLabelText(en.driftInterval) as HTMLInputElement).value).toBe('9')
+    expect((screen.getByLabelText(en.noProgressRounds) as HTMLInputElement).value).toBe('4')
+    expect((await screen.findByRole('switch', { name: 'Disable completion-check' })).getAttribute('aria-checked')).toBe('true')
   })
 })

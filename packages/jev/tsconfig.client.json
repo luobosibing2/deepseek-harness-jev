@@ -1,5 +1,5 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": { "rootDir": "src", "outDir": "lib/types" },
-  "include": ["src/client/**/*.ts", "src/client/**/*.tsx", "src/types.ts", "src/selection-types.ts"]
+  "include": ["src/client/**/*.ts", "src/client/**/*.tsx", "src/types.ts", "src/selection-types.ts", "src/supervision-types.ts"]
 }

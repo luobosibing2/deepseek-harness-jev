@@ -55,6 +55,10 @@ export type JevJudgeResult =
   | { kind: 'cancelled'; operationId: string }
   | { kind: 'not-adopted'; operationId: string; reason: string }
 
+/** Non-interactive attempts return failure without opening a human question. */
+export type JevJudgeOnceResult = JevJudgeResult
+  | { kind: 'failed'; operationId?: string; failure: { code: string; message: string } }
+
 /** Stable failure code without provider payload or credential text. */
 export class JevError extends Error {
   constructor(readonly code: string, message: string) {
@@ -103,6 +107,7 @@ export class JevService extends TypertRemoteService {
   private readonly active = new Set<Promise<unknown>>()
   private readonly controllers = new Set<AbortController>()
   private disposing = false
+  private readonly featureListeners = new Set<(features: Readonly<Record<string, boolean>>) => void>()
 
   constructor(ctx: Context, private readonly config: Config) {
     super(ctx, 'jev')
@@ -118,6 +123,15 @@ export class JevService extends TypertRemoteService {
     }, 'jev.ledger')
     this.ctx.effect(() => this.ctx.llm.registerAdapter([JEV_PROVIDER], this.adapter), 'jev.adapter')
     this.ctx.effect(() => this.ctx.settings.configure({ auto: false }, this.ctx.fiber), 'jev.settings')
+    let features = JSON.stringify(this.config.features.get())
+    this.ctx.on('loader/volatile-update', () => {
+      const next = this.config.features.get()
+      const identity = JSON.stringify(next)
+      if (identity === features) return
+      features = identity
+      const snapshot = Object.freeze({ ...next })
+      for (const listener of this.featureListeners) listener(snapshot)
+    })
   }
 
   private records(): JevLedger {
@@ -199,6 +213,46 @@ export class JevService extends TypertRemoteService {
     return this.runActive(options.signal, lifetime => this.judgeOwned(options, lifetime))
   }
 
+  /** Make one logged attempt without human waiting or automatic retry. Only `ok` permits adoption. */
+  judgeOnce(options: JevJudgeOptions): Promise<JevJudgeOnceResult> {
+    return this.runActive<JevJudgeOnceResult>(options.signal, async lifetime => {
+      let operationId: string | undefined
+      try {
+        if (!this.features.has(options.featureId)) throw new JevError('UNKNOWN_FEATURE', 'Jev feature is not registered')
+        if (!this.isEnabled(options.featureId)) throw new JevError('FEATURE_DISABLED', 'Jev feature is disabled')
+        const operation = await this.records().create(options.featureId, options.link)
+        operationId = operation.id
+        if (lifetime.aborted) return this.cancel(operation.id)
+        const request = await this.untilAbort(Promise.resolve(options.refresh(lifetime)), lifetime)
+        validateRequest(request)
+        const attempted = await this.tryOnce(operation.id, request, options.interpret, lifetime, options.featureId)
+        if (lifetime.aborted) return this.cancel(operation.id)
+        if (!attempted.ok) return { kind: 'failed', operationId, failure: attempted.failure }
+        const current = options.canAdopt === undefined ? true
+          : await this.untilAbort(Promise.resolve(options.canAdopt(attempted.response, lifetime)), lifetime)
+        if (lifetime.aborted) return this.cancel(operation.id)
+        if (current !== true) {
+          const reason = current || 'Target is no longer current'
+          await this.writeReceipt(operation.id, { id: 'not-adopted', status: 'not-adopted', reason, at: new Date().toISOString() })
+          return { kind: 'not-adopted', operationId, reason }
+        }
+        return { kind: 'ok', operationId, attemptId: attempted.attemptId, response: attempted.response }
+      } catch (error) {
+        const code = error instanceof JevError && /^[A-Z][A-Z0-9_]{0,63}$/.test(error.code) ? error.code : 'SERVICE_FAILURE'
+        const failure = { code, message: 'Jev ' + code.toLowerCase().replaceAll('_', ' ') }
+        if (operationId !== undefined) {
+          try {
+            if (lifetime.aborted) await this.records().setStatus(operationId, 'cancelled')
+            else await this.records().failOperation(operationId, failure)
+          }
+          catch { /* A failed ledger remains unconfirmed; this background path never blocks the Agent. */ }
+        }
+        if (lifetime.aborted && operationId !== undefined) return { kind: 'cancelled', operationId }
+        return { kind: 'failed', ...operationId === undefined ? {} : { operationId }, failure }
+      }
+    }).catch(error => ({ kind: 'failed', failure: safeFailure(error) }))
+  }
+
   private runActive<T>(outer: AbortSignal | undefined, execute: (signal: AbortSignal) => Promise<T>): Promise<T> {
     if (this.disposing) return Promise.reject(new JevError('UNAVAILABLE', 'Jev service is stopping'))
     const controller = new AbortController()
@@ -270,7 +324,16 @@ export class JevService extends TypertRemoteService {
     return { kind: 'cancelled', operationId }
   }
 
-  private isEnabled(id: string): boolean { return this.config.features.get()[id] === true }
+  private isEnabled(id: string): boolean { return this.isFeatureEnabled(id) }
+
+  /** Read this profile's current enablement synchronously; absent feature ids are disabled. */
+  isFeatureEnabled(featureId: string): boolean { return this.config.features.get()[featureId] === true }
+
+  /** Observe committed feature-setting changes synchronously; the consumer owns the disposer. */
+  onFeatureStateChange(listener: (features: Readonly<Record<string, boolean>>) => void): () => void {
+    this.featureListeners.add(listener)
+    return () => { this.featureListeners.delete(listener) }
+  }
 
   private async ask(agent: Agent, signal: AbortSignal, detail: string): Promise<'retry' | 'cancel'> {
     try {

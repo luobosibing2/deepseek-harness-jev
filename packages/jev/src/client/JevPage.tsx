@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useRef, useState, useSyncExternalStore }
 import { Button, SegmentedTabs, StateDot, Switch } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { ConfigForm } from '@deepseek-ai/dsh-client-ui-settings/client'
 import type { InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
+import type { SupervisionConfigValues } from '../supervision-types.ts'
 import type { SelectionConfigValues } from '../selection-types.ts'
 import type {
   JevActionStatus, JevCredentialStatus, JevFeatureView, JevProbeResult, JevRecordDetail,
@@ -35,6 +36,7 @@ export interface JevPageRemote {
 export interface JevPageFace {
   form: ConfigForm<JevConfigValues>
   selectionForm?: ConfigForm<SelectionConfigValues>
+  supervisionForm?: ConfigForm<SupervisionConfigValues>
   jev: JevPageRemote
   notifySuccess: (message: string) => void
 }
@@ -98,6 +100,7 @@ export function JevPage(props: JevPageProps) {
       {tab === 'settings'
         ? <div id="jev-settings-panel" role="tabpanel" aria-labelledby="jev-settings-tab" className={css.panel}>
           <SettingsPanel form={props.form} jev={props.jev} notifySuccess={props.notifySuccess} t={t} />
+          {props.supervisionForm && <SupervisionSettings form={props.supervisionForm} notifySuccess={props.notifySuccess} t={t} />}
           {props.selectionForm && <SelectionSettings form={props.selectionForm} notifySuccess={props.notifySuccess} t={t} />}
         </div>
         : <div id="jev-records-panel" role="tabpanel" aria-labelledby="jev-records-tab"><RecordsPanel jev={props.jev} t={t} /></div>}
@@ -198,6 +201,95 @@ function SelectionSettings({ form, notifySuccess, t }: {
       </div>)}</div>
       <div className={css.actions}><Button variant="primary" disabled={!snapshot.writable || saving || !dirty} onClick={() => { void save() }}>{saving ? t('saving') : t('saveSelectionCounts')}</Button>{!snapshot.writable && <span className={css.hint}>{t('readOnly')}</span>}</div>
       {saveError && <p role="alert" className={css.notice}>{t('selectionCountSaveFailed')}</p>}
+    </div>}
+  </section>
+}
+
+type SupervisionField = keyof SupervisionConfigValues
+const SUPERVISION_FIELDS: readonly { key: SupervisionField; label: JevLocaleKey }[] = [
+  { key: 'driftInterval', label: 'driftInterval' },
+  { key: 'noProgressRounds', label: 'noProgressRounds' },
+  { key: 'evidenceChars', label: 'evidenceChars' },
+]
+
+function SupervisionSettings({ form, notifySuccess, t }: {
+  form: ConfigForm<SupervisionConfigValues>; notifySuccess: (message: string) => void; t: Translate
+}) {
+  const subscribe = useCallback((listener: () => void) => form.subscribe(listener), [form])
+  const getSnapshot = useCallback(() => form.getSnapshot(), [form])
+  const snapshot = useSyncExternalStore(subscribe, getSnapshot, getSnapshot)
+  const [draft, setDraft] = useState<Record<SupervisionField, string>>({ driftInterval: '', noProgressRounds: '', evidenceChars: '' })
+  const [errors, setErrors] = useState<Partial<Record<SupervisionField, boolean>>>({})
+  const [saveError, setSaveError] = useState(false)
+  const [saving, setSaving] = useState(false)
+  const [hydrated, setHydrated] = useState(false)
+  const edited = useRef(false)
+  const observed = useRef('')
+
+  useEffect(() => {
+    if (snapshot.value === undefined) return
+    const next = {
+      driftInterval: String(snapshot.value.driftInterval),
+      noProgressRounds: String(snapshot.value.noProgressRounds),
+      evidenceChars: String(snapshot.value.evidenceChars),
+    }
+    const signature = JSON.stringify(next)
+    if (signature === observed.current) return
+    observed.current = signature
+    if (!edited.current) setDraft(next)
+    setHydrated(true)
+  }, [snapshot.value])
+
+  const current = snapshot.value
+  const dirty = hydrated && current !== undefined && SUPERVISION_FIELDS.some(({ key }) => draft[key] !== String(current[key]))
+
+  useEffect(() => { if (!dirty) edited.current = false }, [dirty])
+
+  const edit = (key: SupervisionField, value: string) => {
+    edited.current = true
+    setDraft(previous => ({ ...previous, [key]: value }))
+    setErrors(previous => ({ ...previous, [key]: false }))
+    setSaveError(false)
+  }
+
+  const save = async () => {
+    const parsed = {} as SupervisionConfigValues
+    const nextErrors: Partial<Record<SupervisionField, boolean>> = {}
+    for (const { key } of SUPERVISION_FIELDS) {
+      const value = parsePositiveInteger(draft[key])
+      if (value === null) nextErrors[key] = true
+      else parsed[key] = value
+    }
+    if (Object.keys(nextErrors).length > 0) { setErrors(nextErrors); return }
+    setSaving(true)
+    setSaveError(false)
+    try {
+      const accepted = await form.mutate(SUPERVISION_FIELDS.map(({ key }) => ({ op: 'set' as const, path: [key], value: parsed[key] })), snapshot.revision)
+      if (accepted) {
+        const saved = form.getSnapshot().value
+        if (saved !== undefined) {
+          setDraft({ driftInterval: String(saved.driftInterval), noProgressRounds: String(saved.noProgressRounds), evidenceChars: String(saved.evidenceChars) })
+          edited.current = false
+        }
+        notifySuccess(t('supervisionCountSaved'))
+      } else setSaveError(true)
+    } catch { setSaveError(true) }
+    finally { setSaving(false) }
+  }
+
+  return <section className={css.section} aria-label={t('supervisionCounts')}>
+    <h3 className={css.heading}>{t('supervisionCounts')}</h3>
+    <p className={css.hint}>{t('supervisionCountsHint')}</p>
+    {snapshot.status === 'loading' && current === undefined && <Loading label={t('loading')} />}
+    {snapshot.status === 'unavailable' && <p className={css.notice}>{t('unavailable')}</p>}
+    {current !== undefined && <div className={css.form}>
+      <div className={css.filters}>{SUPERVISION_FIELDS.map(({ key, label }) => <div className={css.field} key={key}>
+        <label htmlFor={`jev-supervision-${key}`}>{t(label)}</label>
+        <input id={`jev-supervision-${key}`} type="text" inputMode="numeric" value={draft[key]} aria-invalid={errors[key] || undefined} aria-describedby={errors[key] ? `jev-supervision-${key}-error` : undefined} disabled={!snapshot.writable || saving} onChange={event => { edit(key, event.target.value) }} />
+        {errors[key] && <span id={`jev-supervision-${key}-error`} role="alert" className={css.notice}>{t('supervisionCountInvalid')}</span>}
+      </div>)}</div>
+      <div className={css.actions}><Button variant="primary" disabled={!snapshot.writable || saving || !dirty} onClick={() => { void save() }}>{saving ? t('saving') : t('saveSupervisionCounts')}</Button>{!snapshot.writable && <span className={css.hint}>{t('readOnly')}</span>}</div>
+      {saveError && <p role="alert" className={css.notice}>{t('supervisionCountSaveFailed')}</p>}
     </div>}
   </section>
 }
@@ -452,6 +544,7 @@ function RecordsPanel({ jev, t }: RecordsProps) {
       {detail && <div className={css.detail}>
         <div className={css.meta}>{t('operation')}: {detail.id} · {t('status')}: {statusLabel(detail.status, t)}</div>
         <DetailBlock label={t('operation')} value={detail.link} />
+        <DetailBlock label={t('failure')} value={detail.failure} />
         <h4 className={css.heading}>{t('attempts')}</h4>
         {detail.attemptRecords.map((attempt, index) => <div className={css.record} key={attempt.id}>
           <div className={css.meta}>#{index + 1} · {dateText(attempt.startedAt)} · {statusLabel(attempt.status, t)}{attempt.latencyMs !== undefined ? ` · ${t('latency')}: ${attempt.latencyMs} ms` : ''}</div>
