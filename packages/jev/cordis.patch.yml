@@ -12,3 +12,5 @@
       name: '@dsh-jev/plugin/shared-findings'
     - id: jev-interjection-routing
       name: '@dsh-jev/plugin/interjection'
+    - id: jev-web
+      name: '@dsh-jev/plugin/web'

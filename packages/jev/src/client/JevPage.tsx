@@ -4,6 +4,8 @@ import React, { useCallback, useEffect, useRef, useState, useSyncExternalStore }
 import { Button, SegmentedTabs, StateDot, Switch } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { ConfigForm } from '@deepseek-ai/dsh-client-ui-settings/client'
 import type { InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
+import { WebSettings } from './WebSettings.tsx'
+import type { WebLimits } from '../web-types.ts'
 import type { SupervisionConfigValues } from '../supervision-types.ts'
 import type { SelectionConfigValues } from '../selection-types.ts'
 import type {
@@ -37,6 +39,7 @@ export interface JevPageFace {
   form: ConfigForm<JevConfigValues>
   selectionForm?: ConfigForm<SelectionConfigValues>
   supervisionForm?: ConfigForm<SupervisionConfigValues>
+  webForm?: ConfigForm<WebLimits>
   jev: JevPageRemote
   notifySuccess: (message: string) => void
 }
@@ -100,6 +103,7 @@ export function JevPage(props: JevPageProps) {
       {tab === 'settings'
         ? <div id="jev-settings-panel" role="tabpanel" aria-labelledby="jev-settings-tab" className={css.panel}>
           <SettingsPanel form={props.form} jev={props.jev} notifySuccess={props.notifySuccess} t={t} />
+          {props.webForm && <WebSettings form={props.webForm} notifySuccess={props.notifySuccess} t={t} />}
           {props.supervisionForm && <SupervisionSettings form={props.supervisionForm} notifySuccess={props.notifySuccess} t={t} />}
           {props.selectionForm && <SelectionSettings form={props.selectionForm} notifySuccess={props.notifySuccess} t={t} />}
         </div>

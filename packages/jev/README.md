@@ -68,6 +68,32 @@ On Host restore, the plugin scans those recorded intervals before permitting mod
 
 `ctx.jev.recordInterrupted(featureId, link)` records a recovery interruption without a model call or human question. The feature must be registered but may be disabled. `link.sessionId` and `link.inputVersion` must identify the Session and original input; the same feature/Session/input key returns the same record. The ledger writes `interrupted`, zero attempts and a fixed `INTERRUPTED` explanation in one durable put. The original input remains available through its Session identity; this API does not fabricate a model attempt.
 
+## Native 网页目标执行
+
+`@dsh-jev/plugin/web` 在现有 bundle 中登记默认关闭的 `native-web-execution` 功能，并提供页面交接工具 `jev_web_bind`、目标工具 `jev_web_goal`、页面读取工具 `jev_web_observe` 与轨迹读取工具 `jev_web_history`。启用后仍需主 Agent 明确调用目标工具；普通 `cua_driver_native__*` 工具不增加 Jev 判断、不被替换。插件不创建或关闭 Cua runtime，不注册第二个 computer-use provider，也不启动 MCP Server。DSH Native 及已准备好的浏览器是外部前提。
+
+主 Agent 先通过 Native `browser_prepare` 准备任务浏览器，再从 `list_windows` 找到该进程的实际窗口，将同一 Cua `session`、准备结果的 `pid` 和窗口的 `window_id` 传给 `jev_web_bind`。该工具调用既有 Native 的绑定能力，把 `target_id` 和各标签页的 `tab_id`、标题、网址放入模型可见的 JSON 正文；它不启动浏览器、不导航，也不调用 Jev。主 Agent 从列表中选择任务页面，使用返回的原始标识调用 Native 导航或 `jev_web_goal`。绑定拒绝保留原原因，缺少标识不猜测；不得把 CDP target、标签页序号或占位值当作 Cua `tab_id`。DSH 0.1.7-rc.2 普通 Native 的正文只显示绑定摘要，结构化结果中的标签页标识须由此插件工具显式交给模型。
+
+主 Agent 将现有 Cua `session`、`target_id`、`tab_id` 以及 `goal` 交给工具；`session` 是 Cua 的显式会话，不是 DSH Session ID。可提供 `constraints` 和 `texts: [{ label, text }]`，其中 `label` 说明字段用途，`text` 是允许填写的原文。第一版使用 `semantic_v2` 声明的点击、填写和滚动能力。填写以替换字段内容执行，空字符串可明确清空；缺少内容时返回字段线索，不生成文本。文件上传、截图定位、桌面应用和未交接页面操作返回主 Agent 处理。
+
+每轮判断包含目标、约束、当前页面、候选及近期实际结果；字段明确区分空值、匹配已给原文、其他值与未知值，填写后的唯一读回事实单独记录。已匹配的原文不再构造相同替换，不能由“已填写”推断整个目标已完成。历史只携带动作和实际交付／验证结果，不把原始回执、概率和计时塞入选择上下文。Jev 只选择候选 ID，不生成工具参数；页面文字是观察证据，不能覆盖任务指令。
+
+候选先过滤不可见、禁用与缺乏可识别名称的点击／填写目标，再按已确认输入／焦点、具名可见控件及其余具名目标排序；同优先级保留观察次序。不同 ref 的同名控件不合并，只有同 ref、同动作和同参数才去重。普通 pointer 能力不产生滚动候选，只有观察明确声明 scroll 或 scrollable 状态时才提供有界方向选项；滚动不挤占已经可容纳的点击与填写。每个保留候选的元素信息一并传给 Jev，省略与过滤原因进入输入及轨迹。当前 semantic_v2 未提供的父子关系、href 和 bounds 不会被猜测补充。
+
+`input_route` 默认 `trusted`；调用方可显式选择 `dom_event` 合成后台点击／滚动，但后台拒绝后插件不会自动更换路线。刷新同一页面快照会替换旧引用。公开动作回执可能不保留过期引用的细分拒绝码；收到拒绝后交回主 Agent，不解析展示文字来猜测可重试，也不重发旧动作。
+
+现有 Jev 设置页提供以下限制，按 profile 保存并在新运行开始时读取：决策轮次 `maxRounds=20`、连续无变化观察 `noProgressRounds=3`、连续 observe 选择 `maxObserveRounds=3`、可执行候选 `maxCandidates=80`、滚动候选 `maxScrollCandidates=2`（仍计入总候选额度）、近期步骤 `historySteps=8`、页面正文字符 `evidenceChars=16000`、滚动 CSS 像素 `scrollPixels=600`、结果摘要步骤 `resultSteps=5`。只重新观察和人工重试也占决策预算；第三次连续选择 observe 时交回主模型，不再读取或判断。无变化比较忽略快照／引用 ID 和正文显示空白，保留字段值、控件顺序和能力变化。动作后的观察直接供下一次选择使用，人工重试和显式 observe 则重新读取。
+
+`jev_web_observe(session,target_id,tab_id)` 通过同一 Native 读取当前页，将实际 refs、值、页面正文、快照身份和覆盖范围写入模型正文，不调用 Jev。可传 Native 的 `query`、`scope_ref`、`continuation` 补充特定范围，但新观察替换旧引用，不拼接多个快照的 refs。正文按现有限制截取，完整观察保存在插件记录中；只传返回的 `observation_id` 及 `offset/limit` 可按字符读取保存的 JSON，不再触发 Native 观察。保存记录属于历史证据，分页不能证明引用仍有效；页面操作或其他观察后需重新读取。每个 DSH 会话只能读取自己的记录。
+
+`jev_web_goal` 返回运行标识、结束原因、已执行动作数、最后可用页面证据、近期步骤及完整记录入口。`completion-suggested` 是完成建议，`completion_verified` 始终为 false，主 Agent 必须结合证据决定是否完成。`needs-main-agent` 包括合法 unknown、连续重新观察上限和无可用候选的前置检查；`handoff_reason` 区分页面未就绪、观察不完整、目标信息不足、能力缺失与判断无法确定。空白页或无可识别动作且无 Native busy 状态时，在首次判断前交回，零 Jev 请求。业务无法判定时，插件立即交回主模型继续 Native CUA，不询问人，也不重试 Jev。结果的 `handoff` 提供原 Cua 页面标识、输入路由及有界的当前元素；省略的元素可从 `jev_web_history` 读取完整观察；需要当前引用时调用 `jev_web_observe`。主模型须结合已有执行轨迹避免重复动作，重新观察后使用新引用，不能在证据和候选未变时反复调用目标工具。其他结束原因区分缺少内容、能力不足、动作拒绝／失败、结果未确认、预算、无进展、关闭、取消、中断和内部故障。Native 动作以最终公开的 `ActionResult`（`effect/route/delivery/evidence/escalation`）判定，不能读取底层实现里的旧 `status:ok` 当作最终协议。`refused`、`partial`、`suspected_noop` 和非后台交付都会停止；`unverifiable` 只表示效果未验证，不表示没有交付或目标完成。后台交付后重新观察；填写还需完整交付计数与同角色、名称及 frame 的唯一字段值读回吻合，才继续下一步。同名字段无法唯一验证时交回未确认，不重复填写。步骤中的 `executed` 是交付事实，`verification` 单独记录 `unverified`／`value-readback`。
+
+完整轨迹保存在按 profile 隔离的插件 storage domain。主 Agent 调用 `jev_web_history` 不带 `run_id` 可列出本 DSH 会话的运行，包括被取消的调用；带 `run_id` 则按 `offset`／`limit` 读取完整 JSON 字符页，使用 `next_offset` 继续。其他 DSH 会话不能读取此轨迹。公共 Jev 判断记录以 `runId`、步骤及回执与它关联。运行中的 `metrics.observe/action` 测量 Native 工具管线调用次数与耗时；`judgmentWait` 测量整个公共 judge 等待，包含服务调用、人工等待以及重试观察，与 observe 时间可能重叠，不能直接相加。单次 Jev 请求延迟从关联的公共 attempt 记录读取；候选分类、省略、选择及读回结果可分别从运行和步骤恢复。旧记录中缺失的新指标保持缺失，不伪造计时。主模型看见的目标工具结果仍由 DSH 原工具日志保存；内部 Native 子调用不伪装为独立的模型调用。
+
+动作执行前先保存待执行状态，执行后的回执与动作不是原子事务。写入失败停止后续动作；重启将未完成运行标为中断、待执行动作标为未确认，不重发模型请求或重放动作。取消与卸载只影响本功能自己的工作，借用的浏览器和正常 Native 保持可用。Jev 服务超时、失败和无效响应继续使用公共人工 Retry／Cancel；合法 `unknown` 是业务交接结果，不进入该流程。手动重试重新观察，关闭后需先启用或取消。已发出的有效判断可在功能关闭后完成本步，但不继续下一轮。
+
+`tests/web.test.ts` 使用真实 DSH 工具流程、AgentLoop、Session 重放、JSON 存储和本地确定性 Jev HTTP 服务验证控制流程；其中 Native 是明确的测试替身，不能据此声称已验证真实浏览器或付费模型质量。
+
 ## Consumer API
 
 Register a feature from its own Cordis plugin and give the returned disposer to its own effect. Supply the exact live Web root `Agent` from the business invocation; `ctx.userQuestions` verifies that identity before asking the human.
@@ -149,5 +175,7 @@ New user requirements, target goal revisions, cancellation, and task completion 
 `ctx.jev.isFeatureEnabled(id)` reads current profile enablement synchronously. `ctx.jev.onFeatureStateChange(listener)` returns an owned disposer and synchronously supplies an immutable feature snapshot after the owning Loader fiber commits changed feature values. It does not emit an initial snapshot or unchanged settings. Consumers register their disposer with `ctx.effect` and can read the initial state using `isFeatureEnabled`.
 
 ## 验收记录
+
+Native 网页执行的测试范围和真实运行边界见 [网页目标执行验收](../../docs/testing/native-web-execution.md)。
 
 四组执行检查 Hook 的测试、真实调用结果与已接受边界见 [2026-09-27 验收归档](../../docs/testing/2026-09-27-jev-hooks/README.md)。

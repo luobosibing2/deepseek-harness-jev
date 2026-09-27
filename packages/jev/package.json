@@ -47,6 +47,10 @@
     "./interjection": {
       "types": "./lib/types/interjection.d.ts",
       "default": "./lib/interjection.js"
+    },
+    "./web": {
+      "types": "./lib/types/web.d.ts",
+      "default": "./lib/web.js"
     }
   },
   "dsh": {

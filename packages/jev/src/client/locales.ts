@@ -2,6 +2,7 @@
 
 /** Dictionary keys rendered by the Jev page. */
 export type JevLocaleKey =
+  | 'webMaxObserve' | 'webMaxScrollCandidates' | 'webLimits' | 'webLimitsHint' | 'webMaxRounds' | 'webNoProgress' | 'webMaxCandidates' | 'webHistory' | 'webEvidence' | 'webScroll' | 'webResultSteps' | 'webInvalid' | 'webSave' | 'webSaved' | 'webSaveFailed'
   | 'sharedFindingsName' | 'sharedFindingsDescription'
   | 'tabs' | 'settings' | 'records' | 'connection' | 'features' | 'noFeatures'
   | 'baseUrl' | 'model' | 'credentialRef' | 'timeoutMs' | 'apiKey' | 'apiKeyHint'
@@ -23,6 +24,9 @@ export type JevLocaleKey =
 
 /** English copy. */
 export const en: Record<JevLocaleKey, string> = {
+  webLimits: 'Native webpage goals', webLimitsHint: 'These limits apply only to explicit webpage goals. Native tools remain available. Reading again also consumes a decision round. Changes apply to new runs.',
+  webMaxObserve: 'Consecutive reobservations', webMaxScrollCandidates: 'Scroll candidates',
+  webMaxRounds: 'Decision rounds', webNoProgress: 'Unchanged observations', webMaxCandidates: 'Executable candidates', webHistory: 'Recent steps in judgments', webEvidence: 'Page evidence characters', webScroll: 'Scroll distance (CSS pixels)', webResultSteps: 'Steps in result summary', webInvalid: 'Enter whole numbers within the displayed ranges.', webSave: 'Save webpage limits', webSaved: 'Webpage limits saved.', webSaveFailed: 'Could not save webpage limits.',
   sharedFindingsName: 'Shared finding corrections', sharedFindingsDescription: 'Compare already shared reports and messages, correct actual recipients, and ask the root to verify conflicts.',
   tabs: 'Jev pages', settings: 'Settings and features', records: 'Decision records',
   connection: 'Shared connection', features: 'Features', noFeatures: 'No features are registered yet.',
@@ -47,6 +51,9 @@ export const en: Record<JevLocaleKey, string> = {
 
 /** Simplified Chinese copy. */
 export const zh: Record<JevLocaleKey, string> = {
+  webLimits: 'Native 网页目标执行', webLimitsHint: '限制只作用于明确调用的网页目标；普通 Native 工具保持可用。重新观察也占一个决策轮次。修改应用于新运行。',
+  webMaxObserve: '连续重新观察上限', webMaxScrollCandidates: '滚动候选数上限',
+  webMaxRounds: '决策轮次上限', webNoProgress: '连续无变化观察次数', webMaxCandidates: '可执行候选数', webHistory: '判断携带的近期步骤数', webEvidence: '页面证据字符数', webScroll: '滚动距离（CSS 像素）', webResultSteps: '结果摘要步骤数', webInvalid: '请输入显示范围内的整数', webSave: '保存网页执行限制', webSaved: '网页执行限制已保存', webSaveFailed: '无法保存网页执行限制',
   sharedFindingsName: '共享发现纠正', sharedFindingsDescription: '比较已共享报告和消息，纠正实际接收者，并将冲突交给主代理核实。',
   tabs: 'Jev 页面', settings: '设置与功能', records: '判断记录',
   connection: '共用连接', features: '功能目录', noFeatures: '当前没有登记的功能',

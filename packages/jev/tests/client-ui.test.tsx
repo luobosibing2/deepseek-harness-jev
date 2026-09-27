@@ -10,6 +10,8 @@ import { JevPage, type JevConfigValues, type JevPageRemote } from '../src/client
 import { en, zh, type JevLocaleKey } from '../src/client/locales.ts'
 import type { SupervisionConfigValues } from '../src/supervision-types.ts'
 import type { SelectionConfigValues } from '../src/selection-types.ts'
+import { WebSettings } from '../src/client/WebSettings.tsx'
+import type { WebLimits } from '../src/web-types.ts'
 import type { JevRecordDetail, JevRecordSummary } from '../src/types.ts'
 
 // The published primitive barrel imports optional DSH libraries that the Host
@@ -131,6 +133,37 @@ function remoteStub(): JevPageRemote {
 function renderPage(form: ConfigForm<JevConfigValues>, jev: JevPageRemote, selectionForm?: ConfigForm<SelectionConfigValues>, notifySuccess: (message: string) => void = () => {}) {
   return render(<JevPage view="page" form={form} selectionForm={selectionForm} jev={jev} notifySuccess={notifySuccess} t={(key: JevLocaleKey) => en[key]} />)
 }
+
+it('validates and saves Native webpage limits without enabling the feature', async () => {
+  let snapshot: ConfigFormSnapshot<WebLimits> = { status: 'ready', base: {}, user: {}, revision: 3, writable: true, mode: 'host',
+    value: { maxRounds: 20, noProgressRounds: 3, maxCandidates: 80, maxObserveRounds: 3, maxScrollCandidates: 2, historySteps: 8, evidenceChars: 16000, scrollPixels: 600, resultSteps: 5 } }
+  const listeners = new Set<() => void>()
+  const mutate = vi.fn(async (ops: readonly { op: string; path: readonly string[]; value?: unknown }[], revision?: number) => {
+    expect(revision).toBe(3)
+    snapshot = { ...snapshot, value: { ...snapshot.value! }, revision: 4 }
+    for (const op of ops) Object.assign(snapshot.value!, { [op.path[0]]: op.value })
+    for (const notify of listeners) notify()
+    return true
+  })
+  const form: ConfigForm<WebLimits> = { getSnapshot: () => snapshot, subscribe: fn => { listeners.add(fn); return () => { listeners.delete(fn) } },
+    mutate, set: async () => false, unset: async () => false }
+  const notifySuccess = vi.fn()
+  render(<WebSettings form={form} t={key => zh[key]} notifySuccess={notifySuccess} />)
+  const rounds = await screen.findByLabelText(new RegExp(zh.webMaxRounds))
+  fireEvent.change(rounds, { target: { value: '0' } })
+  fireEvent.click(screen.getByRole('button', { name: zh.webSave }))
+  expect(await screen.findByText(zh.webInvalid)).toBeTruthy()
+  expect(mutate).not.toHaveBeenCalled()
+  fireEvent.change(rounds, { target: { value: '7' } })
+  fireEvent.change(screen.getByLabelText(new RegExp(zh.webMaxObserve)), { target: { value: '4' } })
+  fireEvent.change(screen.getByLabelText(new RegExp(zh.webMaxScrollCandidates)), { target: { value: '1' } })
+  fireEvent.click(screen.getByRole('button', { name: zh.webSave }))
+  await waitFor(() => expect(notifySuccess).toHaveBeenCalledWith(zh.webSaved))
+  expect(snapshot.value?.maxRounds).toBe(7)
+  expect(snapshot.value?.maxObserveRounds).toBe(4)
+  expect(snapshot.value?.maxScrollCandidates).toBe(1)
+  expect(mutate.mock.calls[0][0].some(op => op.path.includes('features'))).toBe(false)
+})
 
 describe('Jev bundle page', () => {
   it('shows only credential status, writes a replacement, and runs one explicit diagnostic', async () => {
