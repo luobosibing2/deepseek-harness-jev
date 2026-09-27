@@ -11,7 +11,7 @@ import Storage from '@deepseek-ai/dsh-storage'
 import { JsonStorageBackend } from '@deepseek-ai/dsh-storage-json'
 import { DomainFacility } from '@deepseek-ai/dsh-storage-domain'
 import UserQuestionService from '@deepseek-ai/dsh-user-questions'
-import JevService, { Config } from '../src/index.ts'
+import JevService, { Config, JevError } from '../src/index.ts'
 import { JevLedger } from '../src/ledger.ts'
 import type { JevRequest } from '../src/types.ts'
 
@@ -97,7 +97,7 @@ async function setup(options: { root: string; profile: string; url: string; enab
     await backend.close()
   }
   cleanups.push(dispose)
-  return { ctx, agent, dispose, features: jevFiber.config.features as Volatile<Record<string, boolean>> }
+  return { ctx, agent, dispose, jevFiber, features: jevFiber.config.features as Volatile<Record<string, boolean>> }
 }
 
 async function root() {
@@ -115,6 +115,29 @@ describe('Jev Host through Cordis, LlmRuntime, JSON storage, and local HTTP', ()
     expect(() => Config({ model: ' ' })).toThrow()
     expect(Config({ baseUrl: '' }).baseUrl.get()).toBe('')
   })
+  it('publishes a synchronous committed feature snapshot only when enablement changes', async () => {
+    const path = await root()
+    const http = await fixture([])
+    const { ctx, jevFiber, features } = await setup({ root: join(path, 'storage'), profile: join(path, 'profile'), url: http.url })
+    const observed: boolean[] = []
+    const dispose = ctx.jev.onFeatureStateChange(snapshot => {
+      observed.push(snapshot.fixture === true)
+      expect(ctx.jev.isFeatureEnabled('fixture')).toBe(snapshot.fixture === true)
+      expect(Object.isFrozen(snapshot)).toBe(true)
+    })
+    const own: Context = Object.create(jevFiber.ctx)
+    own[Context.filter] = owner => owner.fiber === jevFiber
+    updateVolatile(features, createVolatile({ fixture: false }))
+    jevFiber.ctx.emit(own, 'loader/volatile-update', [['features']])
+    expect(observed).toEqual([false])
+    jevFiber.ctx.emit(own, 'loader/volatile-update', [['timeoutMs']])
+    expect(observed).toEqual([false])
+    dispose()
+    updateVolatile(features, createVolatile({ fixture: true }))
+    jevFiber.ctx.emit(own, 'loader/volatile-update', [['features']])
+    expect(observed).toEqual([false])
+  })
+
   it('blocks a disabled feature without sending a request', async () => {
     const path = await root()
     const http = await fixture([])
@@ -138,6 +161,48 @@ describe('Jev Host through Cordis, LlmRuntime, JSON storage, and local HTTP', ()
     const record = await ctx.jev.getRecord(outcome.operationId)
     expect(record?.attemptRecords[0]).toMatchObject({ status: 'succeeded', usage: { inputTokens: 17, outputTokens: 5 } })
     expect(JSON.stringify(record)).not.toContain('local-fixture-key')
+  })
+
+  it('makes a single non-interactive attempt and retains failure evidence', async () => {
+    const path = await root()
+    const http = await fixture([{ answers: {} }])
+    const { ctx, agent } = await setup({ root: join(path, 'storage'), profile: join(path, 'profile'), url: http.url })
+    ctx.jev.registerFeature({ id: 'fixture', name: 'Fixture', description: 'Test only' })
+    const ask = vi.fn()
+    ctx.on('user-questions/request', ask)
+    const result = await ctx.jev.judgeOnce({ featureId: 'fixture', agent, link: {}, refresh: () => request })
+    expect(result).toMatchObject({ kind: 'failed', failure: { code: 'INVALID_RESPONSE' } })
+    expect(ask).not.toHaveBeenCalled()
+    expect(http.received).toHaveLength(1)
+    expect((await ctx.jev.getRecord(result.operationId!))?.attemptRecords).toHaveLength(1)
+  })
+
+  it('records a sanitized refresh failure without an HTTP attempt or human question', async () => {
+    const path = await root()
+    const http = await fixture([])
+    const { ctx, agent } = await setup({ root: join(path, 'storage'), profile: join(path, 'profile'), url: http.url })
+    ctx.jev.registerFeature({ id: 'fixture', name: 'Fixture', description: 'Test only' })
+    const ask = vi.fn()
+    ctx.on('user-questions/request', ask)
+    const result = await ctx.jev.judgeOnce({ featureId: 'fixture', agent, link: {}, refresh: () => { throw new JevError('RULE_READ_FAILED', 'private text that must not be stored') } })
+    expect(result).toMatchObject({ kind: 'failed', failure: { code: 'RULE_READ_FAILED' } })
+    expect(http.received).toHaveLength(0)
+    expect(ask).not.toHaveBeenCalled()
+    const record = await ctx.jev.getRecord(result.operationId!)
+    expect(record?.failure).toEqual({ code: 'RULE_READ_FAILED', message: 'Jev rule read failed' })
+    expect(record?.attemptRecords).toHaveLength(0)
+    expect(JSON.stringify(record)).not.toContain('private text')
+  })
+
+  it('does not adopt a valid background answer after its target changes', async () => {
+    const path = await root()
+    const http = await fixture([valid])
+    const { ctx, agent } = await setup({ root: join(path, 'storage'), profile: join(path, 'profile'), url: http.url })
+    ctx.jev.registerFeature({ id: 'fixture', name: 'Fixture', description: 'Test only' })
+    const result = await ctx.jev.judgeOnce({ featureId: 'fixture', agent, link: {}, refresh: () => request,
+      canAdopt: () => 'Requirements changed' })
+    expect(result.kind).toBe('not-adopted')
+    expect((await ctx.jev.getRecord(result.operationId!))?.receipts[0]?.status).toBe('not-adopted')
   })
 
   it('waits for a manual retry and refreshes the second attempt input', async () => {

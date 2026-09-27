@@ -77,6 +77,7 @@ const detailSchema: z.ZodType<JevRecordDetail> = z.object({
   attempts: z.number().int().nonnegative(), actionStatus: actionStatusSchema.optional(), diagnostic: z.boolean(),
   link: z.object({ sessionId: nonempty.optional(), runId: nonempty.optional(), stepId: nonempty.optional(), inputVersion: nonempty.optional() }),
   attemptRecords: z.array(attemptSchema),
+  failure: z.object({ code: nonempty, message: nonempty }).optional(),
   receipts: z.array(z.object({ id: nonempty, status: actionStatusSchema, reason: z.string().optional(), at: nonempty })),
 }).superRefine((detail, issue) => {
   if (detail.attempts !== detail.attemptRecords.length) {
@@ -181,6 +182,11 @@ export class JevLedger {
 
   async setStatus(operationId: string, status: JevRecordStatus): Promise<void> {
     await this.domain.table('operations').update(operationId, current => ({ ...current, status, updatedAt: new Date().toISOString() }))
+  }
+
+  /** Preserve a pre-attempt or ledger-stage failure without inventing an HTTP attempt. */
+  async failOperation(operationId: string, failure: { code: string; message: string }): Promise<void> {
+    await this.domain.table('operations').update(operationId, current => ({ ...current, status: 'failed', failure, updatedAt: new Date().toISOString() }))
   }
 
   async receipt(operationId: string, receipt: JevActionReceipt): Promise<JevRecordDetail> {

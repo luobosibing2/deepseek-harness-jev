@@ -6,14 +6,36 @@
   "main": "./lib/index.js",
   "types": "./lib/types/index.d.ts",
   "exports": {
-    ".": { "types": "./lib/types/index.d.ts", "default": "./lib/index.js" },
-    "./selection": { "types": "./lib/types/selection.d.ts", "default": "./lib/selection.js" },
-    "./types": { "types": "./lib/types/types.d.ts", "default": "./lib/types/types.js" },
-    "./remote": { "types": "./lib/typert.remote-client.d.ts", "default": "./lib/typert.remote-client.js" },
-    "./typert": { "types": "./lib/typert.host.d.ts", "default": "./lib/typert.host.js" },
-    "./client": { "types": "./lib/types/client/index.d.ts", "default": "./lib/client.js" },
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./selection": {
+      "types": "./lib/types/selection.d.ts",
+      "default": "./lib/selection.js"
+    },
+    "./types": {
+      "types": "./lib/types/types.d.ts",
+      "default": "./lib/types/types.js"
+    },
+    "./remote": {
+      "types": "./lib/typert.remote-client.d.ts",
+      "default": "./lib/typert.remote-client.js"
+    },
+    "./typert": {
+      "types": "./lib/typert.host.d.ts",
+      "default": "./lib/typert.host.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
     "./cordis.patch.yml": "./cordis.patch.yml",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./instructions": {
+      "types": "./lib/types/instructions.d.ts",
+      "default": "./lib/instructions.js"
+    }
   },
   "dsh": {
     "client": {
@@ -28,18 +50,18 @@
         "@deepseek-ai/dsh-client-ui-layout"
       ]
     },
-    "bundle": { "patch": "./cordis.patch.yml" }
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "4.0.4",
+    "@deepseek-ai/cordis-plugin-loader": "1.0.5",
     "@deepseek-ai/dsh-agent": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-fs": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-skill": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-subprocess": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-tool-fs-search": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-tools": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-app-boot": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-agent-instructions": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-agent-preset-registry": "0.1.7-rc.2",
     "@deepseek-ai/dsh-api-remotes": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-app-boot": "0.1.7-rc.2",
     "@deepseek-ai/dsh-client-locale": "0.1.7-rc.2",
     "@deepseek-ai/dsh-client-store": "0.1.7-rc.2",
     "@deepseek-ai/dsh-client-ui-layout": "0.1.7-rc.2",
@@ -49,9 +71,15 @@
     "@deepseek-ai/dsh-client-ui-settings": "0.1.7-rc.2",
     "@deepseek-ai/dsh-client-ui-slots": "0.1.7-rc.2",
     "@deepseek-ai/dsh-credentials": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-fs": "0.1.7-rc.2",
     "@deepseek-ai/dsh-llm": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-scope": "0.1.7-rc.2",
     "@deepseek-ai/dsh-settings": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-skill": "0.1.7-rc.2",
     "@deepseek-ai/dsh-storage-domain": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-subprocess": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-tool-fs-search": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-tools": "0.1.7-rc.2",
     "@deepseek-ai/dsh-typert-protocol": "0.1.7-rc.2",
     "@deepseek-ai/dsh-user-questions": "0.1.7-rc.2",
     "react": "^18.2.0",
@@ -59,20 +87,14 @@
   },
   "devDependencies": {
     "@deepseek-ai/cordis": "4.0.4",
+    "@deepseek-ai/cordis-plugin-loader": "1.0.5",
     "@deepseek-ai/cosmokit": "1.8.5",
     "@deepseek-ai/dsh-agent": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-fs": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-fs-local": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-skill": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-subprocess": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-system-prompt": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-session": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-ptc-runtime": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-tool-skill": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-tool-fs-search": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-tools": "0.1.7-rc.2",
-    "@deepseek-ai/dsh-app-boot": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-agent-instructions": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-agent-loop": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-agent-preset-registry": "0.1.7-rc.2",
     "@deepseek-ai/dsh-api-remotes": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-app-boot": "0.1.7-rc.2",
     "@deepseek-ai/dsh-client-locale": "0.1.7-rc.2",
     "@deepseek-ai/dsh-client-store": "0.1.7-rc.2",
     "@deepseek-ai/dsh-client-ui-layout": "0.1.7-rc.2",
@@ -82,11 +104,23 @@
     "@deepseek-ai/dsh-client-ui-settings": "0.1.7-rc.2",
     "@deepseek-ai/dsh-client-ui-slots": "0.1.7-rc.2",
     "@deepseek-ai/dsh-credentials": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-fs": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-fs-local": "0.1.7-rc.2",
     "@deepseek-ai/dsh-llm": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-ptc-runtime": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-scope": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-session": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-session-projection": "0.1.7-rc.2",
     "@deepseek-ai/dsh-settings": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-skill": "0.1.7-rc.2",
     "@deepseek-ai/dsh-storage": "0.1.7-rc.2",
     "@deepseek-ai/dsh-storage-domain": "0.1.7-rc.2",
     "@deepseek-ai/dsh-storage-json": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-subprocess": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-system-prompt": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-tool-fs-search": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-tool-skill": "0.1.7-rc.2",
+    "@deepseek-ai/dsh-tools": "0.1.7-rc.2",
     "@deepseek-ai/dsh-typert-protocol": "0.1.7-rc.2",
     "@deepseek-ai/dsh-user-questions": "0.1.7-rc.2",
     "react": "18.2.0",
