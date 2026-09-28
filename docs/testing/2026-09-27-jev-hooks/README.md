@@ -4,4 +4,6 @@ The supervision and correction hooks were checked with a 152-test integration ru
 
 The private engineering archive retains the raw logs and screenshots. They are not distributed in this public repository. See the source tests and package README for reproducible behavior and scope.
 
+The [public Chinese result summary](public-results.zh-CN.md) records the six features' observed live outcomes and limits without publishing raw sessions or personal files.
+
 Supervision does not guarantee task completion or instruction compliance.

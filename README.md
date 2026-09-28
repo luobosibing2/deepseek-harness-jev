@@ -1,6 +1,6 @@
 # deepseek-harness-jev
 
-English | [简体中文](README.zh-CN.md)
+English | [简体中文](README.zh-CN.md) | [中文功能与实测网站](https://luobosibing2.github.io/deepseek-harness-jev/)
 
 **Native DeepSeek Harness (DSH) plugin integrating TypeSafe Jev as a System One decision layer.**
 
@@ -9,6 +9,8 @@ English | [简体中文](README.zh-CN.md)
 The main model continues to plan, generate answers, and call native tools. The plugin automatically invokes enabled Jev judgments at DSH extension points for skill catalogs, agent lifecycle, tool results, and approvals, then applies results according to each feature. DSH configures the main model; Jev has a separate connection. Integration uses public Cordis / DSH plugin APIs without modifying the host source.
 
 This is an independent community project, not an official DeepSeek or Jev release. It is an early-stage plugin tested with **DSH 0.1.7-rc.2**; its APIs and model judgments are not a correctness guarantee.
+
+The [Chinese feature website](https://luobosibing2.github.io/deepseek-harness-jev/) explains each DSH integration point, the information sent to Jev, and the observed test cases and limits.
 
 ## What is included?
 

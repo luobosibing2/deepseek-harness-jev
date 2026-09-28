@@ -1,6 +1,6 @@
 # deepseek-harness-jev
 
-[English](README.md) | 简体中文
+[English](README.md) | 简体中文 | [11 项功能与实测网站](https://luobosibing2.github.io/deepseek-harness-jev/)
 
 **DeepSeek Harness（DSH）的原生 Jev 插件：按需接入 TypeSafe Jev / System One 判断。**
 
@@ -9,6 +9,8 @@
 主模型继续负责规划、生成回答和调用原生工具；插件在 DSH 的技能目录、Agent 生命周期、工具结果与审批等扩展点自动发起已启用的 Jev 判断，再按对应功能应用结果。主模型由 DSH 配置，Jev 连接单独配置。接入基于公开的 Cordis / DSH 插件接口，无需修改宿主源码。
 
 这是独立社区项目，并非 DeepSeek 或 Jev 官方发布。当前属于早期插件，已针对 **DSH 0.1.7-rc.2** 验证；接口和模型判断都不构成正确性保证。
+
+[中文功能介绍站](https://luobosibing2.github.io/deepseek-harness-jev/)逐项说明 DSH 原生触发节点、交给 Jev 的信息，以及实际测试场景、结果和边界。
 
 ## 包含哪些功能？
 
