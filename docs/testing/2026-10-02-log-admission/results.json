@@ -1,0 +1,571 @@
+{
+  "cases": [
+    {
+      "conditions": {
+        "baseline": {
+          "agentExecutionSeconds": 4.888223,
+          "allProtectedExactBlocksRetained": true,
+          "completeNativeOriginalRead": false,
+          "exactDuplicateRuleReplacements": 0,
+          "finalAnswerManuallyCorrect": true,
+          "jevEstimatedUsd": 0.0,
+          "jevOperations": 0,
+          "jevSemanticReplacements": 0,
+          "judgedCandidates": 0,
+          "mainEstimatedUsd": 0.001097856,
+          "nativeExitCode": 0,
+          "nativeIsError": false,
+          "textLayers": {
+            "final": {
+              "sha256": "822d5351075ca837d8b93c631d22111de8156fecf947461d1800759f6926470e",
+              "unicodeCodePoints": 498,
+              "utf8Bytes": 498
+            },
+            "original": {
+              "sha256": "822d5351075ca837d8b93c631d22111de8156fecf947461d1800759f6926470e",
+              "unicodeCodePoints": 498,
+              "utf8Bytes": 498
+            },
+            "proposal": {
+              "sha256": "822d5351075ca837d8b93c631d22111de8156fecf947461d1800759f6926470e",
+              "unicodeCodePoints": 498,
+              "utf8Bytes": 498
+            }
+          }
+        },
+        "log_admission": {
+          "agentExecutionSeconds": 4.839697,
+          "allProtectedExactBlocksRetained": true,
+          "completeNativeOriginalRead": false,
+          "exactDuplicateRuleReplacements": 0,
+          "finalAnswerManuallyCorrect": true,
+          "jevEstimatedUsd": 0.0,
+          "jevOperations": 0,
+          "jevSemanticReplacements": 0,
+          "judgedCandidates": 0,
+          "mainEstimatedUsd": 0.000571908,
+          "nativeExitCode": 0,
+          "nativeIsError": false,
+          "textLayers": {
+            "final": {
+              "sha256": "822d5351075ca837d8b93c631d22111de8156fecf947461d1800759f6926470e",
+              "unicodeCodePoints": 498,
+              "utf8Bytes": 498
+            },
+            "original": {
+              "sha256": "822d5351075ca837d8b93c631d22111de8156fecf947461d1800759f6926470e",
+              "unicodeCodePoints": 498,
+              "utf8Bytes": 498
+            },
+            "proposal": {
+              "sha256": "822d5351075ca837d8b93c631d22111de8156fecf947461d1800759f6926470e",
+              "unicodeCodePoints": 498,
+              "utf8Bytes": 498
+            }
+          }
+        }
+      },
+      "id": "short-general",
+      "synthetic": true
+    },
+    {
+      "conditions": {
+        "baseline": {
+          "agentExecutionSeconds": 9.963992,
+          "allProtectedExactBlocksRetained": true,
+          "completeNativeOriginalRead": false,
+          "exactDuplicateRuleReplacements": 0,
+          "finalAnswerManuallyCorrect": true,
+          "jevEstimatedUsd": 0.0,
+          "jevOperations": 0,
+          "jevSemanticReplacements": 0,
+          "judgedCandidates": 0,
+          "mainEstimatedUsd": 0.0036719879999999997,
+          "nativeExitCode": 0,
+          "nativeIsError": false,
+          "textLayers": {
+            "final": {
+              "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+              "unicodeCodePoints": 11229,
+              "utf8Bytes": 11229
+            },
+            "original": {
+              "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+              "unicodeCodePoints": 11229,
+              "utf8Bytes": 11229
+            },
+            "proposal": {
+              "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+              "unicodeCodePoints": 11229,
+              "utf8Bytes": 11229
+            }
+          }
+        },
+        "log_admission": {
+          "agentExecutionSeconds": 11.024297,
+          "allProtectedExactBlocksRetained": true,
+          "completeNativeOriginalRead": false,
+          "exactDuplicateRuleReplacements": 0,
+          "finalAnswerManuallyCorrect": true,
+          "jevEstimatedUsd": 0.000298326,
+          "jevOperations": 1,
+          "jevSemanticReplacements": 0,
+          "judgedCandidates": 10,
+          "mainEstimatedUsd": 0.0028803,
+          "nativeExitCode": 0,
+          "nativeIsError": false,
+          "textLayers": {
+            "final": {
+              "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+              "unicodeCodePoints": 11229,
+              "utf8Bytes": 11229
+            },
+            "original": {
+              "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+              "unicodeCodePoints": 11229,
+              "utf8Bytes": 11229
+            },
+            "proposal": {
+              "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+              "unicodeCodePoints": 11229,
+              "utf8Bytes": 11229
+            }
+          }
+        }
+      },
+      "id": "long-general",
+      "synthetic": true
+    },
+    {
+      "conditions": {
+        "baseline": {
+          "agentExecutionSeconds": 5.355566,
+          "allProtectedExactBlocksRetained": true,
+          "completeNativeOriginalRead": false,
+          "exactDuplicateRuleReplacements": 0,
+          "finalAnswerManuallyCorrect": true,
+          "jevEstimatedUsd": 0.0,
+          "jevOperations": 0,
+          "jevSemanticReplacements": 0,
+          "judgedCandidates": 0,
+          "mainEstimatedUsd": 0.001450956,
+          "nativeExitCode": 0,
+          "nativeIsError": false,
+          "textLayers": {
+            "final": {
+              "sha256": "3351c408453b8f029c71f9265514a79ec2ce6431323745ba4783abb1c3ff2323",
+              "unicodeCodePoints": 8951,
+              "utf8Bytes": 9151
+            },
+            "original": {
+              "sha256": "3351c408453b8f029c71f9265514a79ec2ce6431323745ba4783abb1c3ff2323",
+              "unicodeCodePoints": 8951,
+              "utf8Bytes": 9151
+            },
+            "proposal": {
+              "sha256": "3351c408453b8f029c71f9265514a79ec2ce6431323745ba4783abb1c3ff2323",
+              "unicodeCodePoints": 8951,
+              "utf8Bytes": 9151
+            }
+          }
+        },
+        "log_admission": {
+          "agentExecutionSeconds": 5.986673,
+          "allProtectedExactBlocksRetained": true,
+          "completeNativeOriginalRead": false,
+          "exactDuplicateRuleReplacements": 0,
+          "finalAnswerManuallyCorrect": true,
+          "jevEstimatedUsd": 0.000201558,
+          "jevOperations": 1,
+          "jevSemanticReplacements": 0,
+          "judgedCandidates": 8,
+          "mainEstimatedUsd": 0.001102608,
+          "nativeExitCode": 0,
+          "nativeIsError": false,
+          "textLayers": {
+            "final": {
+              "sha256": "3351c408453b8f029c71f9265514a79ec2ce6431323745ba4783abb1c3ff2323",
+              "unicodeCodePoints": 8951,
+              "utf8Bytes": 9151
+            },
+            "original": {
+              "sha256": "3351c408453b8f029c71f9265514a79ec2ce6431323745ba4783abb1c3ff2323",
+              "unicodeCodePoints": 8951,
+              "utf8Bytes": 9151
+            },
+            "proposal": {
+              "sha256": "3351c408453b8f029c71f9265514a79ec2ce6431323745ba4783abb1c3ff2323",
+              "unicodeCodePoints": 8951,
+              "utf8Bytes": 9151
+            }
+          }
+        }
+      },
+      "id": "ordinary-pass",
+      "synthetic": true
+    },
+    {
+      "conditions": {
+        "baseline": {
+          "agentExecutionSeconds": 7.331289,
+          "allProtectedExactBlocksRetained": true,
+          "completeNativeOriginalRead": false,
+          "exactDuplicateRuleReplacements": 0,
+          "finalAnswerManuallyCorrect": true,
+          "jevEstimatedUsd": 0.0,
+          "jevOperations": 0,
+          "jevSemanticReplacements": 0,
+          "judgedCandidates": 0,
+          "mainEstimatedUsd": 0.002290656,
+          "nativeExitCode": 1,
+          "nativeIsError": false,
+          "textLayers": {
+            "final": {
+              "sha256": "a63307f25b090cbbaea980d997b1af8b09a48f97c2fcfe3767bf71f6fc431f1f",
+              "unicodeCodePoints": 9206,
+              "utf8Bytes": 9400
+            },
+            "original": {
+              "sha256": "a63307f25b090cbbaea980d997b1af8b09a48f97c2fcfe3767bf71f6fc431f1f",
+              "unicodeCodePoints": 9206,
+              "utf8Bytes": 9400
+            },
+            "proposal": {
+              "sha256": "a63307f25b090cbbaea980d997b1af8b09a48f97c2fcfe3767bf71f6fc431f1f",
+              "unicodeCodePoints": 9206,
+              "utf8Bytes": 9400
+            }
+          }
+        },
+        "log_admission": {
+          "agentExecutionSeconds": 7.146257,
+          "allProtectedExactBlocksRetained": true,
+          "completeNativeOriginalRead": true,
+          "exactDuplicateRuleReplacements": 0,
+          "finalAnswerManuallyCorrect": true,
+          "jevEstimatedUsd": 0.00020592600000000002,
+          "jevOperations": 1,
+          "jevSemanticReplacements": 8,
+          "judgedCandidates": 8,
+          "mainEstimatedUsd": 0.0016066199999999998,
+          "nativeExitCode": 1,
+          "nativeIsError": false,
+          "textLayers": {
+            "final": {
+              "sha256": "1d0c180df5e4add5db8db6d3092cf68097e71092b3a62099db2e63bcd15f0ce9",
+              "unicodeCodePoints": 1567,
+              "utf8Bytes": 1571
+            },
+            "original": {
+              "sha256": "a63307f25b090cbbaea980d997b1af8b09a48f97c2fcfe3767bf71f6fc431f1f",
+              "unicodeCodePoints": 9206,
+              "utf8Bytes": 9400
+            },
+            "proposal": {
+              "sha256": "1d0c180df5e4add5db8db6d3092cf68097e71092b3a62099db2e63bcd15f0ce9",
+              "unicodeCodePoints": 1567,
+              "utf8Bytes": 1571
+            }
+          }
+        }
+      },
+      "id": "failed-slow-named",
+      "synthetic": true
+    },
+    {
+      "conditions": {
+        "baseline": {
+          "agentExecutionSeconds": 12.629015,
+          "allProtectedExactBlocksRetained": true,
+          "completeNativeOriginalRead": false,
+          "exactDuplicateRuleReplacements": 0,
+          "finalAnswerManuallyCorrect": true,
+          "jevEstimatedUsd": 0.0,
+          "jevOperations": 0,
+          "jevSemanticReplacements": 0,
+          "judgedCandidates": 0,
+          "mainEstimatedUsd": 0.003950484,
+          "nativeExitCode": 0,
+          "nativeIsError": false,
+          "textLayers": {
+            "final": {
+              "sha256": "21150854a53fb1f3408c3d769433b2986c1fed25ab49653501fba6f9abca2826",
+              "unicodeCodePoints": 10680,
+              "utf8Bytes": 10858
+            },
+            "original": {
+              "sha256": "21150854a53fb1f3408c3d769433b2986c1fed25ab49653501fba6f9abca2826",
+              "unicodeCodePoints": 10680,
+              "utf8Bytes": 10858
+            },
+            "proposal": {
+              "sha256": "21150854a53fb1f3408c3d769433b2986c1fed25ab49653501fba6f9abca2826",
+              "unicodeCodePoints": 10680,
+              "utf8Bytes": 10858
+            }
+          }
+        },
+        "log_admission": {
+          "agentExecutionSeconds": 7.386275,
+          "allProtectedExactBlocksRetained": true,
+          "completeNativeOriginalRead": true,
+          "exactDuplicateRuleReplacements": 4,
+          "finalAnswerManuallyCorrect": true,
+          "jevEstimatedUsd": 0.000205884,
+          "jevOperations": 1,
+          "jevSemanticReplacements": 7,
+          "judgedCandidates": 7,
+          "mainEstimatedUsd": 0.001757052,
+          "nativeExitCode": 0,
+          "nativeIsError": false,
+          "textLayers": {
+            "final": {
+              "sha256": "f19622274ffb28dfa2974b6ffed572dff1d03f4a8034206c965302d85e919d74",
+              "unicodeCodePoints": 1906,
+              "utf8Bytes": 1908
+            },
+            "original": {
+              "sha256": "21150854a53fb1f3408c3d769433b2986c1fed25ab49653501fba6f9abca2826",
+              "unicodeCodePoints": 10680,
+              "utf8Bytes": 10858
+            },
+            "proposal": {
+              "sha256": "f19622274ffb28dfa2974b6ffed572dff1d03f4a8034206c965302d85e919d74",
+              "unicodeCodePoints": 1906,
+              "utf8Bytes": 1908
+            }
+          }
+        }
+      },
+      "id": "duplicate-failure",
+      "synthetic": true
+    },
+    {
+      "conditions": {
+        "baseline": {
+          "agentExecutionSeconds": 13.512354,
+          "allProtectedExactBlocksRetained": true,
+          "completeNativeOriginalRead": false,
+          "exactDuplicateRuleReplacements": 0,
+          "finalAnswerManuallyCorrect": true,
+          "jevEstimatedUsd": 0.0,
+          "jevOperations": 0,
+          "jevSemanticReplacements": 0,
+          "judgedCandidates": 0,
+          "mainEstimatedUsd": 0.004232555999999999,
+          "nativeExitCode": 0,
+          "nativeIsError": false,
+          "textLayers": {
+            "final": {
+              "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+              "unicodeCodePoints": 11229,
+              "utf8Bytes": 11229
+            },
+            "original": {
+              "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+              "unicodeCodePoints": 11229,
+              "utf8Bytes": 11229
+            },
+            "proposal": {
+              "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+              "unicodeCodePoints": 11229,
+              "utf8Bytes": 11229
+            }
+          }
+        },
+        "log_admission": {
+          "agentExecutionSeconds": 19.142715,
+          "allProtectedExactBlocksRetained": true,
+          "completeNativeOriginalRead": false,
+          "exactDuplicateRuleReplacements": 0,
+          "finalAnswerManuallyCorrect": true,
+          "jevEstimatedUsd": 0.0,
+          "jevOperations": 0,
+          "jevSemanticReplacements": 0,
+          "judgedCandidates": 0,
+          "mainEstimatedUsd": 0.00550932,
+          "nativeExitCode": 0,
+          "nativeIsError": false,
+          "textLayers": {
+            "final": {
+              "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+              "unicodeCodePoints": 11229,
+              "utf8Bytes": 11229
+            },
+            "original": {
+              "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+              "unicodeCodePoints": 11229,
+              "utf8Bytes": 11229
+            },
+            "proposal": {
+              "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+              "unicodeCodePoints": 11229,
+              "utf8Bytes": 11229
+            }
+          }
+        }
+      },
+      "id": "full-intent",
+      "synthetic": true
+    }
+  ],
+  "design": {
+    "advisoryStopUsd": 1,
+    "agentTimeoutSeconds": 120,
+    "agentWebTools": "disabled",
+    "automaticRetries": 0,
+    "caseOrder": [
+      "short-general",
+      "long-general",
+      "ordinary-pass",
+      "failed-slow-named",
+      "duplicate-failure",
+      "full-intent"
+    ],
+    "concurrency": 1,
+    "conditionOrderWithinEachCase": [
+      "baseline",
+      "log_admission"
+    ],
+    "currentFeatureSwitchCount": 12,
+    "defaultAdmissionSettings": {
+      "duplicateMinChars": 200,
+      "duplicateMinLines": 6,
+      "generalBlockChars": 1200,
+      "generalMinChars": 6000,
+      "maxGeneralBlocks": 48,
+      "maxRequestChars": 48000,
+      "maxTaskChars": 12000,
+      "maxTestCandidates": 24,
+      "minSavedChars": 300,
+      "minSavedRatio": 0.1,
+      "omitProbability": 0.8,
+      "slowTestMs": 300,
+      "testMinChars": 4000,
+      "waitMs": 4000
+    },
+    "dockerPermissions": "default nonprivileged Docker; DSH danger-full-access only inside the container",
+    "onlyEnabledFeaturesInLogCondition": [
+      "output-admission",
+      "test-log-admission"
+    ],
+    "plannedTrials": 12,
+    "selectionAndStageNavigationEnabled": false,
+    "syntheticCaseCount": 6,
+    "toolSchemasEqualAcrossConditions": true,
+    "verifier": "disabled"
+  },
+  "documentationDate": "2026-10-02",
+  "evidenceClass": "One historical fixed-input real-provider run, not a maintained public runner",
+  "limitations": [
+    "Synthetic logs, not real software build or test outcomes",
+    "One baseline-first pair per case; provider and cache behavior may drift",
+    "Unicode character reduction is not token, total-cost, or task-success improvement",
+    "No independent DeepSWE verifier; source seed only supplied an image and bootstrap identity",
+    "The experimental helper and raw Sessions remain local and are not a public maintained runner"
+  ],
+  "models": {
+    "jev": {
+      "actualResponseModels": [
+        "jev-1.13.0"
+      ],
+      "requestedModel": "jev-1.13.0"
+    },
+    "main": {
+      "floatingAlias": true,
+      "id": "deepseek-flash",
+      "provider": "deepseek-official",
+      "reasoningEffort": "high",
+      "route": "deepseek-official/deepseek-flash"
+    }
+  },
+  "pricesUsdPerMillionTokens": {
+    "jev": {
+      "cacheFields": "No separate client-side Jev cache usage fields were reported",
+      "input": 0.042,
+      "output": 0,
+      "source": "TypeSafe official Jev 1.13.0 pricing, verified 2026-10-01, USD/M; no separate cache fields"
+    },
+    "main": {
+      "cacheRead": 0.006,
+      "cacheWrite": 0.3,
+      "input": 0.3,
+      "output": 1.2,
+      "source": "DeepSeek official pricing, verified 2026-10-01, conservative peak USD/M"
+    }
+  },
+  "runWindow": {
+    "endAsiaShanghai": "2026-10-01T16:34:56.538391+08:00",
+    "endUtc": "2026-10-01T08:34:56.538391Z",
+    "startAsiaShanghai": "2026-10-01T16:21:44.909968+08:00",
+    "startUtc": "2026-10-01T08:21:44.909968Z"
+  },
+  "schemaVersion": 1,
+  "source": {
+    "deepSweSourceCommit": "0b9fabbb63b9104d678fe965e1632f2dd9eaa2ea",
+    "dockerImageDigest": "sha256:11087ec4eb0320e80546ad5eda89c67938e72be69cbb7c6730cf9baf88dc7556",
+    "dockerPlatform": "linux/amd64",
+    "dshNpmLockSha256": "5f293fee780db2be0ebe5e36e982f6e29ef128dca30f082c26708c13604d97f8",
+    "dshVersion": "0.1.7-rc.2",
+    "manifestSha256": "2259f778d45e7c761eb9bdc46ef619b4a452159e86a3aa6c4827dce809eefcf3",
+    "nodeTarSha256": "84d38715d449447117d05c3e71acd78daa49d5b1bfa8aacf610303920c3322be",
+    "nodeVersion": "24.14.1",
+    "pierSourceCommit": "4d3c14041d16443f3f9f460dcdf23629994a304e",
+    "pluginSourceCommit": "7e208e040d7f4dae7dcdf292e53a4a1b73c0303f",
+    "pluginTarSha256": "e9927b097baff28b05ecd0028b9f0c1d16bf9177aa70fa05b873e76d5403bf70",
+    "pnpmVersion": "11.7.0",
+    "seedTaskId": "vitest-duration-sharding",
+    "seedTaskTreeSha256": "c74fa8aa04aa707c1d6f27094d587526523f13bc8780ddc01bf422fd783e9bf2",
+    "suiteLockSha256": "762b7e2dee013886820cacf417f65ffee3522ce92d9c7d4ae7447d062c16a764"
+  },
+  "summary": {
+    "allFinalAnswersManuallyCorrect": true,
+    "belowThresholdOmitChoicesRetained": 18,
+    "byCondition": {
+      "baseline": {
+        "agentExecutionSeconds": 53.680439,
+        "jevCalls": 0,
+        "jevEstimatedUsd": 0.0,
+        "jevInputTokens": 0,
+        "jevOutputTokens": 0,
+        "knownEstimatedUsd": 0.016694496,
+        "mainCacheReadTokens": 111616,
+        "mainCacheWriteTokens": 0,
+        "mainCalls": 16,
+        "mainEstimatedUsd": 0.016694496,
+        "mainInputTokens": 26544,
+        "mainOutputTokens": 6718
+      },
+      "log_admission": {
+        "agentExecutionSeconds": 55.525914,
+        "jevCalls": 4,
+        "jevEstimatedUsd": 0.000911694,
+        "jevInputTokens": 21707,
+        "jevOutputTokens": 1233,
+        "knownEstimatedUsd": 0.014339502,
+        "mainCacheReadTokens": 141568,
+        "mainCacheWriteTokens": 0,
+        "mainCalls": 18,
+        "mainEstimatedUsd": 0.013427808,
+        "mainInputTokens": 17424,
+        "mainOutputTokens": 6126
+      }
+    },
+    "completedTrials": 12,
+    "exactDuplicateRuleReplacements": 4,
+    "highConfidenceSemanticReplacements": 15,
+    "hostChangedAfterProposalTrials": 0,
+    "judgedCandidates": 33,
+    "logConditionBypasses": 2,
+    "missingCostTrials": 0,
+    "realJevOperations": 4,
+    "savedOriginalsWithCompleteNativeRead": 2,
+    "searchRequests": 0,
+    "structurallyValidTrials": 12,
+    "totalAgentExecutionSeconds": 109.206353,
+    "totalJevEstimatedUsd": 0.000911694,
+    "totalKnownEstimatedUsd": 0.031033998,
+    "totalMainEstimatedUsd": 0.030122304
+  },
+  "title": "Synthetic native-bash log admission frozen run"
+}
