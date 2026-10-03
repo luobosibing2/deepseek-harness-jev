@@ -1,0 +1,1590 @@
+{
+  "interpretation": "Only actual ledger attempts, final receipts, native observer evidence, and usage; no source-rule expectation counted as an executed replacement",
+  "schemaVersion": 1,
+  "slotCount": 12,
+  "slots": [
+    {
+      "actualReplacements": {
+        "exactDuplicateRules": 0,
+        "jevSemantic": 0
+      },
+      "agentExecutionSeconds": 4.888223,
+      "case": "short-general",
+      "condition": "baseline",
+      "effectiveFullIntent": false,
+      "evidenceExport": "complete",
+      "featuresMatch": true,
+      "finalAnswerManuallyChecked": true,
+      "finalAnswerMatchesSyntheticFacts": true,
+      "fixtureIntegrity": "unchanged",
+      "hostChangedAfterProposal": false,
+      "jevLedger": {
+        "attemptCalls": 0,
+        "invalidRecordFiles": 0,
+        "operations": 0,
+        "operationsDetail": [],
+        "serviceReady": true,
+        "storageComplete": true
+      },
+      "jevUsage": {
+        "calls": 0,
+        "estimatedUsd": 0.0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "knownEstimatedUsd": 0.001097856,
+      "mechanicalAnswerHints": {
+        "SHORT-7": true,
+        "ready": true
+      },
+      "modelUsage": {
+        "cacheReadTokens": 11776,
+        "cacheWriteTokens": 0,
+        "calls": 2,
+        "estimatedUsd": 0.001097856,
+        "inputTokens": 2160,
+        "outputTokens": 316
+      },
+      "nativeBash": {
+        "exitCode": 0,
+        "finalExitCode": 0,
+        "finalIsError": false,
+        "isError": false
+      },
+      "protectedExactBlocks": {
+        "first_line": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "19667aa864229fce16f1aa53e47e5285c5f3e42a255c22a243f569f12e1a7391"
+        },
+        "last_line": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "c4667ab491f7a3d7eb6e3282705c3e0ccc1fbe901e3b2450e199c4d8b50c7b2a"
+        }
+      },
+      "recordedToolCalls": {
+        "bash": 1
+      },
+      "recovery": {
+        "completeFormattedRead": null,
+        "locatorPresent": false,
+        "nativeReadCalls": 0,
+        "nativeReadPages": 0,
+        "observedLines": null,
+        "originalExactSha256": null,
+        "savedOriginal": false,
+        "savedUtf8Bytes": null,
+        "totalLines": null
+      },
+      "structuralOk": true,
+      "termination": "normal",
+      "textLayers": {
+        "final": {
+          "sha256": "822d5351075ca837d8b93c631d22111de8156fecf947461d1800759f6926470e",
+          "unicodeCodePoints": 498,
+          "utf8Bytes": 498
+        },
+        "original": {
+          "sha256": "822d5351075ca837d8b93c631d22111de8156fecf947461d1800759f6926470e",
+          "unicodeCodePoints": 498,
+          "utf8Bytes": 498
+        },
+        "proposal": {
+          "sha256": "822d5351075ca837d8b93c631d22111de8156fecf947461d1800759f6926470e",
+          "unicodeCodePoints": 498,
+          "utf8Bytes": 498
+        }
+      },
+      "trialStatus": "completed",
+      "triggerClassification": "feature-disabled",
+      "usageComplete": true
+    },
+    {
+      "actualReplacements": {
+        "exactDuplicateRules": 0,
+        "jevSemantic": 0
+      },
+      "agentExecutionSeconds": 4.839697,
+      "case": "short-general",
+      "condition": "log_admission",
+      "effectiveFullIntent": false,
+      "evidenceExport": "complete",
+      "featuresMatch": true,
+      "finalAnswerManuallyChecked": true,
+      "finalAnswerMatchesSyntheticFacts": true,
+      "fixtureIntegrity": "unchanged",
+      "hostChangedAfterProposal": false,
+      "jevLedger": {
+        "attemptCalls": 0,
+        "invalidRecordFiles": 0,
+        "operations": 0,
+        "operationsDetail": [],
+        "serviceReady": true,
+        "storageComplete": true
+      },
+      "jevUsage": {
+        "calls": 0,
+        "estimatedUsd": 0.0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "knownEstimatedUsd": 0.000571908,
+      "mechanicalAnswerHints": {
+        "SHORT-7": true,
+        "ready": true
+      },
+      "modelUsage": {
+        "cacheReadTokens": 13568,
+        "cacheWriteTokens": 0,
+        "calls": 2,
+        "estimatedUsd": 0.000571908,
+        "inputTokens": 339,
+        "outputTokens": 324
+      },
+      "nativeBash": {
+        "exitCode": 0,
+        "finalExitCode": 0,
+        "finalIsError": false,
+        "isError": false
+      },
+      "protectedExactBlocks": {
+        "first_line": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "19667aa864229fce16f1aa53e47e5285c5f3e42a255c22a243f569f12e1a7391"
+        },
+        "last_line": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "c4667ab491f7a3d7eb6e3282705c3e0ccc1fbe901e3b2450e199c4d8b50c7b2a"
+        }
+      },
+      "recordedToolCalls": {
+        "bash": 1
+      },
+      "recovery": {
+        "completeFormattedRead": null,
+        "locatorPresent": false,
+        "nativeReadCalls": 0,
+        "nativeReadPages": 0,
+        "observedLines": null,
+        "originalExactSha256": null,
+        "savedOriginal": false,
+        "savedUtf8Bytes": null,
+        "totalLines": null
+      },
+      "structuralOk": true,
+      "termination": "normal",
+      "textLayers": {
+        "final": {
+          "sha256": "822d5351075ca837d8b93c631d22111de8156fecf947461d1800759f6926470e",
+          "unicodeCodePoints": 498,
+          "utf8Bytes": 498
+        },
+        "original": {
+          "sha256": "822d5351075ca837d8b93c631d22111de8156fecf947461d1800759f6926470e",
+          "unicodeCodePoints": 498,
+          "utf8Bytes": 498
+        },
+        "proposal": {
+          "sha256": "822d5351075ca837d8b93c631d22111de8156fecf947461d1800759f6926470e",
+          "unicodeCodePoints": 498,
+          "utf8Bytes": 498
+        }
+      },
+      "trialStatus": "completed",
+      "triggerClassification": "source-below-length-threshold",
+      "usageComplete": true
+    },
+    {
+      "actualReplacements": {
+        "exactDuplicateRules": 0,
+        "jevSemantic": 0
+      },
+      "agentExecutionSeconds": 9.963992,
+      "case": "long-general",
+      "condition": "baseline",
+      "effectiveFullIntent": false,
+      "evidenceExport": "complete",
+      "featuresMatch": true,
+      "finalAnswerManuallyChecked": true,
+      "finalAnswerMatchesSyntheticFacts": true,
+      "fixtureIntegrity": "unchanged",
+      "hostChangedAfterProposal": false,
+      "jevLedger": {
+        "attemptCalls": 0,
+        "invalidRecordFiles": 0,
+        "operations": 0,
+        "operationsDetail": [],
+        "serviceReady": true,
+        "storageComplete": true
+      },
+      "jevUsage": {
+        "calls": 0,
+        "estimatedUsd": 0.0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "knownEstimatedUsd": 0.0036719879999999997,
+      "mechanicalAnswerHints": {
+        "GEN-42": true,
+        "ready": true
+      },
+      "modelUsage": {
+        "cacheReadTokens": 34048,
+        "cacheWriteTokens": 0,
+        "calls": 4,
+        "estimatedUsd": 0.0036719879999999997,
+        "inputTokens": 6479,
+        "outputTokens": 1270
+      },
+      "nativeBash": {
+        "exitCode": 0,
+        "finalExitCode": 0,
+        "finalIsError": false,
+        "isError": false
+      },
+      "protectedExactBlocks": {
+        "first_line": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "4d98ce34a22971cca3589094b73b02e3f9b5dc56c4df689d45de0c7e205615eb"
+        },
+        "last_line": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "65e8a2f47a89755a68753495e28623993c5ddda931c3bf4bc5d25de006ed387d"
+        }
+      },
+      "recordedToolCalls": {
+        "bash": 2,
+        "read": 1
+      },
+      "recovery": {
+        "completeFormattedRead": null,
+        "locatorPresent": false,
+        "nativeReadCalls": 0,
+        "nativeReadPages": 0,
+        "observedLines": null,
+        "originalExactSha256": null,
+        "savedOriginal": false,
+        "savedUtf8Bytes": null,
+        "totalLines": null
+      },
+      "structuralOk": true,
+      "termination": "normal",
+      "textLayers": {
+        "final": {
+          "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+          "unicodeCodePoints": 11229,
+          "utf8Bytes": 11229
+        },
+        "original": {
+          "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+          "unicodeCodePoints": 11229,
+          "utf8Bytes": 11229
+        },
+        "proposal": {
+          "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+          "unicodeCodePoints": 11229,
+          "utf8Bytes": 11229
+        }
+      },
+      "trialStatus": "completed",
+      "triggerClassification": "feature-disabled",
+      "usageComplete": true
+    },
+    {
+      "actualReplacements": {
+        "exactDuplicateRules": 0,
+        "jevSemantic": 0
+      },
+      "agentExecutionSeconds": 11.024297,
+      "case": "long-general",
+      "condition": "log_admission",
+      "effectiveFullIntent": false,
+      "evidenceExport": "complete",
+      "featuresMatch": true,
+      "finalAnswerManuallyChecked": true,
+      "finalAnswerMatchesSyntheticFacts": true,
+      "fixtureIntegrity": "unchanged",
+      "hostChangedAfterProposal": false,
+      "jevLedger": {
+        "attemptCalls": 1,
+        "invalidRecordFiles": 0,
+        "operations": 1,
+        "operationsDetail": [
+          {
+            "attempts": [
+              {
+                "choices": [
+                  {
+                    "candidateIndex": 0,
+                    "confidence": 0.62,
+                    "omitProbability": 0.74,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 1,
+                    "confidence": 0.65,
+                    "omitProbability": 0.76,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 2,
+                    "confidence": 0.62,
+                    "omitProbability": 0.75,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 3,
+                    "confidence": 0.65,
+                    "omitProbability": 0.77,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 4,
+                    "confidence": 0.64,
+                    "omitProbability": 0.76,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 5,
+                    "confidence": 0.61,
+                    "omitProbability": 0.74,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 6,
+                    "confidence": 0.62,
+                    "omitProbability": 0.74,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 7,
+                    "confidence": 0.61,
+                    "omitProbability": 0.74,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 8,
+                    "confidence": 0.6,
+                    "omitProbability": 0.73,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 9,
+                    "confidence": 0.64,
+                    "omitProbability": 0.77,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  }
+                ],
+                "latencyMs": 659,
+                "requestCandidateCount": 10,
+                "responseModel": "jev-1.13.0",
+                "status": "succeeded",
+                "usage": {
+                  "inputTokens": 7103,
+                  "outputTokens": 373
+                }
+              }
+            ],
+            "feature": "output-admission",
+            "finalResultReceipts": [],
+            "status": "succeeded"
+          }
+        ],
+        "serviceReady": true,
+        "storageComplete": true
+      },
+      "jevUsage": {
+        "calls": 1,
+        "estimatedUsd": 0.000298326,
+        "inputTokens": 7103,
+        "outputTokens": 373
+      },
+      "knownEstimatedUsd": 0.0031786260000000004,
+      "mechanicalAnswerHints": {
+        "GEN-42": true,
+        "ready": true
+      },
+      "modelUsage": {
+        "cacheReadTokens": 35200,
+        "cacheWriteTokens": 0,
+        "calls": 4,
+        "estimatedUsd": 0.0028803,
+        "inputTokens": 4797,
+        "outputTokens": 1025
+      },
+      "nativeBash": {
+        "exitCode": 0,
+        "finalExitCode": 0,
+        "finalIsError": false,
+        "isError": false
+      },
+      "protectedExactBlocks": {
+        "first_line": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "4d98ce34a22971cca3589094b73b02e3f9b5dc56c4df689d45de0c7e205615eb"
+        },
+        "last_line": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "65e8a2f47a89755a68753495e28623993c5ddda931c3bf4bc5d25de006ed387d"
+        }
+      },
+      "recordedToolCalls": {
+        "bash": 2,
+        "glob": 1,
+        "read": 1
+      },
+      "recovery": {
+        "completeFormattedRead": null,
+        "locatorPresent": false,
+        "nativeReadCalls": 0,
+        "nativeReadPages": 0,
+        "observedLines": null,
+        "originalExactSha256": null,
+        "savedOriginal": false,
+        "savedUtf8Bytes": null,
+        "totalLines": null
+      },
+      "structuralOk": true,
+      "termination": "normal",
+      "textLayers": {
+        "final": {
+          "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+          "unicodeCodePoints": 11229,
+          "utf8Bytes": 11229
+        },
+        "original": {
+          "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+          "unicodeCodePoints": 11229,
+          "utf8Bytes": 11229
+        },
+        "proposal": {
+          "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+          "unicodeCodePoints": 11229,
+          "utf8Bytes": 11229
+        }
+      },
+      "trialStatus": "completed",
+      "triggerClassification": "operation-observed",
+      "usageComplete": true
+    },
+    {
+      "actualReplacements": {
+        "exactDuplicateRules": 0,
+        "jevSemantic": 0
+      },
+      "agentExecutionSeconds": 5.355566,
+      "case": "ordinary-pass",
+      "condition": "baseline",
+      "effectiveFullIntent": false,
+      "evidenceExport": "complete",
+      "featuresMatch": true,
+      "finalAnswerManuallyChecked": true,
+      "finalAnswerMatchesSyntheticFacts": true,
+      "fixtureIntegrity": "unchanged",
+      "hostChangedAfterProposal": false,
+      "jevLedger": {
+        "attemptCalls": 0,
+        "invalidRecordFiles": 0,
+        "operations": 0,
+        "operationsDetail": [],
+        "serviceReady": true,
+        "storageComplete": true
+      },
+      "jevUsage": {
+        "calls": 0,
+        "estimatedUsd": 0.0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "knownEstimatedUsd": 0.001450956,
+      "mechanicalAnswerHints": {
+        "1.9s": true,
+        "100 passed": false
+      },
+      "modelUsage": {
+        "cacheReadTokens": 11776,
+        "cacheWriteTokens": 0,
+        "calls": 2,
+        "estimatedUsd": 0.001450956,
+        "inputTokens": 3585,
+        "outputTokens": 254
+      },
+      "nativeBash": {
+        "exitCode": 0,
+        "finalExitCode": 0,
+        "finalIsError": false,
+        "isError": false
+      },
+      "protectedExactBlocks": {
+        "duration": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "8f71d1739f633a7b5ee4a8f8b8290bec8243e5a949a21e84811334f650e3f827"
+        },
+        "runner_header": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "e323044f0d22649bbd771b034bad6bebd6e1d51c39497b0552ed51a447a990ba"
+        },
+        "summary": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "b2470d5c3b72a20fa4ef7396f2e0c78f89f13811f52404c40a087fb6426d9ca3"
+        }
+      },
+      "recordedToolCalls": {
+        "bash": 1
+      },
+      "recovery": {
+        "completeFormattedRead": null,
+        "locatorPresent": false,
+        "nativeReadCalls": 0,
+        "nativeReadPages": 0,
+        "observedLines": null,
+        "originalExactSha256": null,
+        "savedOriginal": false,
+        "savedUtf8Bytes": null,
+        "totalLines": null
+      },
+      "structuralOk": true,
+      "termination": "normal",
+      "textLayers": {
+        "final": {
+          "sha256": "3351c408453b8f029c71f9265514a79ec2ce6431323745ba4783abb1c3ff2323",
+          "unicodeCodePoints": 8951,
+          "utf8Bytes": 9151
+        },
+        "original": {
+          "sha256": "3351c408453b8f029c71f9265514a79ec2ce6431323745ba4783abb1c3ff2323",
+          "unicodeCodePoints": 8951,
+          "utf8Bytes": 9151
+        },
+        "proposal": {
+          "sha256": "3351c408453b8f029c71f9265514a79ec2ce6431323745ba4783abb1c3ff2323",
+          "unicodeCodePoints": 8951,
+          "utf8Bytes": 9151
+        }
+      },
+      "trialStatus": "completed",
+      "triggerClassification": "feature-disabled",
+      "usageComplete": true
+    },
+    {
+      "actualReplacements": {
+        "exactDuplicateRules": 0,
+        "jevSemantic": 0
+      },
+      "agentExecutionSeconds": 5.986673,
+      "case": "ordinary-pass",
+      "condition": "log_admission",
+      "effectiveFullIntent": false,
+      "evidenceExport": "complete",
+      "featuresMatch": true,
+      "finalAnswerManuallyChecked": true,
+      "finalAnswerMatchesSyntheticFacts": true,
+      "fixtureIntegrity": "unchanged",
+      "hostChangedAfterProposal": false,
+      "jevLedger": {
+        "attemptCalls": 1,
+        "invalidRecordFiles": 0,
+        "operations": 1,
+        "operationsDetail": [
+          {
+            "attempts": [
+              {
+                "choices": [
+                  {
+                    "candidateIndex": 0,
+                    "confidence": 0.57,
+                    "omitProbability": 0.71,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 1,
+                    "confidence": 0.55,
+                    "omitProbability": 0.7,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 2,
+                    "confidence": 0.54,
+                    "omitProbability": 0.69,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 3,
+                    "confidence": 0.57,
+                    "omitProbability": 0.71,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 4,
+                    "confidence": 0.47,
+                    "omitProbability": 0.65,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 5,
+                    "confidence": 0.51,
+                    "omitProbability": 0.67,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 6,
+                    "confidence": 0.47,
+                    "omitProbability": 0.65,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  },
+                  {
+                    "candidateIndex": 7,
+                    "confidence": 0.53,
+                    "omitProbability": 0.69,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": false
+                  }
+                ],
+                "latencyMs": 609,
+                "requestCandidateCount": 8,
+                "responseModel": "jev-1.13.0",
+                "status": "succeeded",
+                "usage": {
+                  "inputTokens": 4799,
+                  "outputTokens": 299
+                }
+              }
+            ],
+            "feature": "test-log-admission",
+            "finalResultReceipts": [],
+            "status": "succeeded"
+          }
+        ],
+        "serviceReady": true,
+        "storageComplete": true
+      },
+      "jevUsage": {
+        "calls": 1,
+        "estimatedUsd": 0.000201558,
+        "inputTokens": 4799,
+        "outputTokens": 299
+      },
+      "knownEstimatedUsd": 0.0013041659999999998,
+      "mechanicalAnswerHints": {
+        "1.9s": true,
+        "100 passed": true
+      },
+      "modelUsage": {
+        "cacheReadTokens": 13568,
+        "cacheWriteTokens": 0,
+        "calls": 2,
+        "estimatedUsd": 0.001102608,
+        "inputTokens": 1816,
+        "outputTokens": 397
+      },
+      "nativeBash": {
+        "exitCode": 0,
+        "finalExitCode": 0,
+        "finalIsError": false,
+        "isError": false
+      },
+      "protectedExactBlocks": {
+        "duration": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "8f71d1739f633a7b5ee4a8f8b8290bec8243e5a949a21e84811334f650e3f827"
+        },
+        "runner_header": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "e323044f0d22649bbd771b034bad6bebd6e1d51c39497b0552ed51a447a990ba"
+        },
+        "summary": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "b2470d5c3b72a20fa4ef7396f2e0c78f89f13811f52404c40a087fb6426d9ca3"
+        }
+      },
+      "recordedToolCalls": {
+        "bash": 1
+      },
+      "recovery": {
+        "completeFormattedRead": null,
+        "locatorPresent": false,
+        "nativeReadCalls": 0,
+        "nativeReadPages": 0,
+        "observedLines": null,
+        "originalExactSha256": null,
+        "savedOriginal": false,
+        "savedUtf8Bytes": null,
+        "totalLines": null
+      },
+      "structuralOk": true,
+      "termination": "normal",
+      "textLayers": {
+        "final": {
+          "sha256": "3351c408453b8f029c71f9265514a79ec2ce6431323745ba4783abb1c3ff2323",
+          "unicodeCodePoints": 8951,
+          "utf8Bytes": 9151
+        },
+        "original": {
+          "sha256": "3351c408453b8f029c71f9265514a79ec2ce6431323745ba4783abb1c3ff2323",
+          "unicodeCodePoints": 8951,
+          "utf8Bytes": 9151
+        },
+        "proposal": {
+          "sha256": "3351c408453b8f029c71f9265514a79ec2ce6431323745ba4783abb1c3ff2323",
+          "unicodeCodePoints": 8951,
+          "utf8Bytes": 9151
+        }
+      },
+      "trialStatus": "completed",
+      "triggerClassification": "operation-observed",
+      "usageComplete": true
+    },
+    {
+      "actualReplacements": {
+        "exactDuplicateRules": 0,
+        "jevSemantic": 0
+      },
+      "agentExecutionSeconds": 7.331289,
+      "case": "failed-slow-named",
+      "condition": "baseline",
+      "effectiveFullIntent": false,
+      "evidenceExport": "complete",
+      "featuresMatch": true,
+      "finalAnswerManuallyChecked": true,
+      "finalAnswerMatchesSyntheticFacts": true,
+      "fixtureIntegrity": "unchanged",
+      "hostChangedAfterProposal": false,
+      "jevLedger": {
+        "attemptCalls": 0,
+        "invalidRecordFiles": 0,
+        "operations": 0,
+        "operationsDetail": [],
+        "serviceReady": true,
+        "storageComplete": true
+      },
+      "jevUsage": {
+        "calls": 0,
+        "estimatedUsd": 0.0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "knownEstimatedUsd": 0.002290656,
+      "mechanicalAnswerHints": {
+        "20ms": true,
+        "420ms": true,
+        "97 passed": true,
+        "AssertionError": true
+      },
+      "modelUsage": {
+        "cacheReadTokens": 11776,
+        "cacheWriteTokens": 0,
+        "calls": 2,
+        "estimatedUsd": 0.002290656,
+        "inputTokens": 3764,
+        "outputTokens": 909
+      },
+      "nativeBash": {
+        "exitCode": 1,
+        "finalExitCode": 1,
+        "finalIsError": false,
+        "isError": false
+      },
+      "protectedExactBlocks": {
+        "duration": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "2f8a94bf112a379a27426e5f9a267e9cd19b25064de2f2396e1423f10464c985"
+        },
+        "exit_marker": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "4a95d745611edb6d0e0f552ec4cb190cebe82d9c6c0e29631f3fc08383f67915"
+        },
+        "fast_named": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "6e505ce1e785c6914a5ee3b88001af35ad68535703ef6863c9e1610961a5d627"
+        },
+        "first_failure_detail": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "545fb71a26916708ba81533032bf20021cf3067ebc8ba82f18b1bcf4b286ac6a"
+        },
+        "slow_named": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "16ead5f7dae7a003100777a9fcc7a14df233bba301121e63eb4cdd470406813c"
+        },
+        "summary": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "2a8a805cf0f2e0aaae7eec02f8a0d035d5c2f60456f1b5b95514e1851a7cd133"
+        }
+      },
+      "recordedToolCalls": {
+        "bash": 1
+      },
+      "recovery": {
+        "completeFormattedRead": null,
+        "locatorPresent": false,
+        "nativeReadCalls": 0,
+        "nativeReadPages": 0,
+        "observedLines": null,
+        "originalExactSha256": null,
+        "savedOriginal": false,
+        "savedUtf8Bytes": null,
+        "totalLines": null
+      },
+      "structuralOk": true,
+      "termination": "normal",
+      "textLayers": {
+        "final": {
+          "sha256": "a63307f25b090cbbaea980d997b1af8b09a48f97c2fcfe3767bf71f6fc431f1f",
+          "unicodeCodePoints": 9206,
+          "utf8Bytes": 9400
+        },
+        "original": {
+          "sha256": "a63307f25b090cbbaea980d997b1af8b09a48f97c2fcfe3767bf71f6fc431f1f",
+          "unicodeCodePoints": 9206,
+          "utf8Bytes": 9400
+        },
+        "proposal": {
+          "sha256": "a63307f25b090cbbaea980d997b1af8b09a48f97c2fcfe3767bf71f6fc431f1f",
+          "unicodeCodePoints": 9206,
+          "utf8Bytes": 9400
+        }
+      },
+      "trialStatus": "completed",
+      "triggerClassification": "feature-disabled",
+      "usageComplete": true
+    },
+    {
+      "actualReplacements": {
+        "exactDuplicateRules": 0,
+        "jevSemantic": 8
+      },
+      "agentExecutionSeconds": 7.146257,
+      "case": "failed-slow-named",
+      "condition": "log_admission",
+      "effectiveFullIntent": false,
+      "evidenceExport": "complete",
+      "featuresMatch": true,
+      "finalAnswerManuallyChecked": true,
+      "finalAnswerMatchesSyntheticFacts": true,
+      "fixtureIntegrity": "unchanged",
+      "hostChangedAfterProposal": false,
+      "jevLedger": {
+        "attemptCalls": 1,
+        "invalidRecordFiles": 0,
+        "operations": 1,
+        "operationsDetail": [
+          {
+            "attempts": [
+              {
+                "choices": [
+                  {
+                    "candidateIndex": 0,
+                    "confidence": 0.75,
+                    "omitProbability": 0.83,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": true
+                  },
+                  {
+                    "candidateIndex": 1,
+                    "confidence": 0.77,
+                    "omitProbability": 0.84,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": true
+                  },
+                  {
+                    "candidateIndex": 2,
+                    "confidence": 0.75,
+                    "omitProbability": 0.84,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": true
+                  },
+                  {
+                    "candidateIndex": 3,
+                    "confidence": 0.78,
+                    "omitProbability": 0.85,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": true
+                  },
+                  {
+                    "candidateIndex": 4,
+                    "confidence": 0.75,
+                    "omitProbability": 0.83,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": true
+                  },
+                  {
+                    "candidateIndex": 5,
+                    "confidence": 0.77,
+                    "omitProbability": 0.84,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": true
+                  },
+                  {
+                    "candidateIndex": 6,
+                    "confidence": 0.75,
+                    "omitProbability": 0.84,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": true
+                  },
+                  {
+                    "candidateIndex": 7,
+                    "confidence": 0.75,
+                    "omitProbability": 0.83,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": true
+                  }
+                ],
+                "latencyMs": 867,
+                "requestCandidateCount": 8,
+                "responseModel": "jev-1.13.0",
+                "status": "succeeded",
+                "usage": {
+                  "inputTokens": 4903,
+                  "outputTokens": 299
+                }
+              }
+            ],
+            "feature": "test-log-admission",
+            "finalResultReceipts": [
+              {
+                "branch": "test-log-admission",
+                "finalChars": 1567,
+                "finalIsError": false,
+                "inputChars": 9206,
+                "jevSemanticReplacements": 8,
+                "kind": "tool-log-final-result",
+                "proposedChars": 1567,
+                "recoveryLocatorPresent": true,
+                "ruleReplacements": 0
+              }
+            ],
+            "status": "succeeded"
+          }
+        ],
+        "serviceReady": true,
+        "storageComplete": true
+      },
+      "jevUsage": {
+        "calls": 1,
+        "estimatedUsd": 0.00020592600000000002,
+        "inputTokens": 4903,
+        "outputTokens": 299
+      },
+      "knownEstimatedUsd": 0.0018125459999999997,
+      "mechanicalAnswerHints": {
+        "20ms": true,
+        "420ms": true,
+        "97 passed": true,
+        "AssertionError": true
+      },
+      "modelUsage": {
+        "cacheReadTokens": 21120,
+        "cacheWriteTokens": 0,
+        "calls": 3,
+        "estimatedUsd": 0.0016066199999999998,
+        "inputTokens": 2637,
+        "outputTokens": 574
+      },
+      "nativeBash": {
+        "exitCode": 1,
+        "finalExitCode": 1,
+        "finalIsError": false,
+        "isError": false
+      },
+      "protectedExactBlocks": {
+        "duration": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "2f8a94bf112a379a27426e5f9a267e9cd19b25064de2f2396e1423f10464c985"
+        },
+        "exit_marker": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "4a95d745611edb6d0e0f552ec4cb190cebe82d9c6c0e29631f3fc08383f67915"
+        },
+        "fast_named": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "6e505ce1e785c6914a5ee3b88001af35ad68535703ef6863c9e1610961a5d627"
+        },
+        "first_failure_detail": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "545fb71a26916708ba81533032bf20021cf3067ebc8ba82f18b1bcf4b286ac6a"
+        },
+        "slow_named": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "16ead5f7dae7a003100777a9fcc7a14df233bba301121e63eb4cdd470406813c"
+        },
+        "summary": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "2a8a805cf0f2e0aaae7eec02f8a0d035d5c2f60456f1b5b95514e1851a7cd133"
+        }
+      },
+      "recordedToolCalls": {
+        "bash": 1,
+        "read": 1
+      },
+      "recovery": {
+        "completeFormattedRead": true,
+        "locatorPresent": true,
+        "nativeReadCalls": 1,
+        "nativeReadPages": 1,
+        "observedLines": 111,
+        "originalExactSha256": true,
+        "savedOriginal": true,
+        "savedUtf8Bytes": 9400,
+        "totalLines": 111
+      },
+      "structuralOk": true,
+      "termination": "normal",
+      "textLayers": {
+        "final": {
+          "sha256": "1d0c180df5e4add5db8db6d3092cf68097e71092b3a62099db2e63bcd15f0ce9",
+          "unicodeCodePoints": 1567,
+          "utf8Bytes": 1571
+        },
+        "original": {
+          "sha256": "a63307f25b090cbbaea980d997b1af8b09a48f97c2fcfe3767bf71f6fc431f1f",
+          "unicodeCodePoints": 9206,
+          "utf8Bytes": 9400
+        },
+        "proposal": {
+          "sha256": "1d0c180df5e4add5db8db6d3092cf68097e71092b3a62099db2e63bcd15f0ce9",
+          "unicodeCodePoints": 1567,
+          "utf8Bytes": 1571
+        }
+      },
+      "trialStatus": "completed",
+      "triggerClassification": "operation-observed",
+      "usageComplete": true
+    },
+    {
+      "actualReplacements": {
+        "exactDuplicateRules": 0,
+        "jevSemantic": 0
+      },
+      "agentExecutionSeconds": 12.629015,
+      "case": "duplicate-failure",
+      "condition": "baseline",
+      "effectiveFullIntent": false,
+      "evidenceExport": "complete",
+      "featuresMatch": true,
+      "finalAnswerManuallyChecked": true,
+      "finalAnswerMatchesSyntheticFacts": true,
+      "fixtureIntegrity": "unchanged",
+      "hostChangedAfterProposal": false,
+      "jevLedger": {
+        "attemptCalls": 0,
+        "invalidRecordFiles": 0,
+        "operations": 0,
+        "operationsDetail": [],
+        "serviceReady": true,
+        "storageComplete": true
+      },
+      "jevUsage": {
+        "calls": 0,
+        "estimatedUsd": 0.0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "knownEstimatedUsd": 0.003950484,
+      "mechanicalAnswerHints": {
+        "420ms": true,
+        "5 failed": true
+      },
+      "modelUsage": {
+        "cacheReadTokens": 30464,
+        "cacheWriteTokens": 0,
+        "calls": 4,
+        "estimatedUsd": 0.003950484,
+        "inputTokens": 5115,
+        "outputTokens": 1861
+      },
+      "nativeBash": {
+        "exitCode": 0,
+        "finalExitCode": 0,
+        "finalIsError": false,
+        "isError": false
+      },
+      "protectedExactBlocks": {
+        "duration": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "db438b6335b58d7c7d4ab2ddc55b2406ea433b8ed4786fc38c5ec18be4e54f4a"
+        },
+        "first_failure_detail": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "50bfd82ed63260f25807ece7e1990dcb8a9c6fa5e5b79a4f54f02217e9e1e01e"
+        },
+        "slow_named": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "16ead5f7dae7a003100777a9fcc7a14df233bba301121e63eb4cdd470406813c"
+        },
+        "summary": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "d01896548a9a62d3d75b74ef5162cc1f36e87fc122c15cdd04f87126fca00070"
+        }
+      },
+      "recordedToolCalls": {
+        "bash": 1,
+        "glob": 1,
+        "read": 1
+      },
+      "recovery": {
+        "completeFormattedRead": null,
+        "locatorPresent": false,
+        "nativeReadCalls": 0,
+        "nativeReadPages": 0,
+        "observedLines": null,
+        "originalExactSha256": null,
+        "savedOriginal": false,
+        "savedUtf8Bytes": null,
+        "totalLines": null
+      },
+      "structuralOk": true,
+      "termination": "normal",
+      "textLayers": {
+        "final": {
+          "sha256": "21150854a53fb1f3408c3d769433b2986c1fed25ab49653501fba6f9abca2826",
+          "unicodeCodePoints": 10680,
+          "utf8Bytes": 10858
+        },
+        "original": {
+          "sha256": "21150854a53fb1f3408c3d769433b2986c1fed25ab49653501fba6f9abca2826",
+          "unicodeCodePoints": 10680,
+          "utf8Bytes": 10858
+        },
+        "proposal": {
+          "sha256": "21150854a53fb1f3408c3d769433b2986c1fed25ab49653501fba6f9abca2826",
+          "unicodeCodePoints": 10680,
+          "utf8Bytes": 10858
+        }
+      },
+      "trialStatus": "completed",
+      "triggerClassification": "feature-disabled",
+      "usageComplete": true
+    },
+    {
+      "actualReplacements": {
+        "exactDuplicateRules": 4,
+        "jevSemantic": 7
+      },
+      "agentExecutionSeconds": 7.386275,
+      "case": "duplicate-failure",
+      "condition": "log_admission",
+      "effectiveFullIntent": false,
+      "evidenceExport": "complete",
+      "featuresMatch": true,
+      "finalAnswerManuallyChecked": true,
+      "finalAnswerMatchesSyntheticFacts": true,
+      "fixtureIntegrity": "unchanged",
+      "hostChangedAfterProposal": false,
+      "jevLedger": {
+        "attemptCalls": 1,
+        "invalidRecordFiles": 0,
+        "operations": 1,
+        "operationsDetail": [
+          {
+            "attempts": [
+              {
+                "choices": [
+                  {
+                    "candidateIndex": 0,
+                    "confidence": 0.82,
+                    "omitProbability": 0.89,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": true
+                  },
+                  {
+                    "candidateIndex": 1,
+                    "confidence": 0.85,
+                    "omitProbability": 0.9,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": true
+                  },
+                  {
+                    "candidateIndex": 2,
+                    "confidence": 0.82,
+                    "omitProbability": 0.88,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": true
+                  },
+                  {
+                    "candidateIndex": 3,
+                    "confidence": 0.81,
+                    "omitProbability": 0.87,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": true
+                  },
+                  {
+                    "candidateIndex": 4,
+                    "confidence": 0.83,
+                    "omitProbability": 0.89,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": true
+                  },
+                  {
+                    "candidateIndex": 5,
+                    "confidence": 0.83,
+                    "omitProbability": 0.89,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": true
+                  },
+                  {
+                    "candidateIndex": 6,
+                    "confidence": 0.8,
+                    "omitProbability": 0.86,
+                    "option": "omit",
+                    "selectedAtDefaultThreshold": true
+                  }
+                ],
+                "latencyMs": 690,
+                "requestCandidateCount": 7,
+                "responseModel": "jev-1.13.0",
+                "status": "succeeded",
+                "usage": {
+                  "inputTokens": 4902,
+                  "outputTokens": 262
+                }
+              }
+            ],
+            "feature": "test-log-admission",
+            "finalResultReceipts": [
+              {
+                "branch": "test-log-admission",
+                "finalChars": 1906,
+                "finalIsError": false,
+                "inputChars": 10680,
+                "jevSemanticReplacements": 7,
+                "kind": "tool-log-final-result",
+                "proposedChars": 1906,
+                "recoveryLocatorPresent": true,
+                "ruleReplacements": 4
+              }
+            ],
+            "status": "succeeded"
+          }
+        ],
+        "serviceReady": true,
+        "storageComplete": true
+      },
+      "jevUsage": {
+        "calls": 1,
+        "estimatedUsd": 0.000205884,
+        "inputTokens": 4902,
+        "outputTokens": 262
+      },
+      "knownEstimatedUsd": 0.001962936,
+      "mechanicalAnswerHints": {
+        "420ms": true,
+        "5 failed": true
+      },
+      "modelUsage": {
+        "cacheReadTokens": 20992,
+        "cacheWriteTokens": 0,
+        "calls": 3,
+        "estimatedUsd": 0.001757052,
+        "inputTokens": 3189,
+        "outputTokens": 562
+      },
+      "nativeBash": {
+        "exitCode": 0,
+        "finalExitCode": 0,
+        "finalIsError": false,
+        "isError": false
+      },
+      "protectedExactBlocks": {
+        "duration": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "db438b6335b58d7c7d4ab2ddc55b2406ea433b8ed4786fc38c5ec18be4e54f4a"
+        },
+        "first_failure_detail": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "50bfd82ed63260f25807ece7e1990dcb8a9c6fa5e5b79a4f54f02217e9e1e01e"
+        },
+        "slow_named": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "16ead5f7dae7a003100777a9fcc7a14df233bba301121e63eb4cdd470406813c"
+        },
+        "summary": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "d01896548a9a62d3d75b74ef5162cc1f36e87fc122c15cdd04f87126fca00070"
+        }
+      },
+      "recordedToolCalls": {
+        "bash": 1,
+        "read": 1
+      },
+      "recovery": {
+        "completeFormattedRead": true,
+        "locatorPresent": true,
+        "nativeReadCalls": 1,
+        "nativeReadPages": 1,
+        "observedLines": 137,
+        "originalExactSha256": true,
+        "savedOriginal": true,
+        "savedUtf8Bytes": 10858,
+        "totalLines": 137
+      },
+      "structuralOk": true,
+      "termination": "normal",
+      "textLayers": {
+        "final": {
+          "sha256": "f19622274ffb28dfa2974b6ffed572dff1d03f4a8034206c965302d85e919d74",
+          "unicodeCodePoints": 1906,
+          "utf8Bytes": 1908
+        },
+        "original": {
+          "sha256": "21150854a53fb1f3408c3d769433b2986c1fed25ab49653501fba6f9abca2826",
+          "unicodeCodePoints": 10680,
+          "utf8Bytes": 10858
+        },
+        "proposal": {
+          "sha256": "f19622274ffb28dfa2974b6ffed572dff1d03f4a8034206c965302d85e919d74",
+          "unicodeCodePoints": 1906,
+          "utf8Bytes": 1908
+        }
+      },
+      "trialStatus": "completed",
+      "triggerClassification": "operation-observed",
+      "usageComplete": true
+    },
+    {
+      "actualReplacements": {
+        "exactDuplicateRules": 0,
+        "jevSemantic": 0
+      },
+      "agentExecutionSeconds": 13.512354,
+      "case": "full-intent",
+      "condition": "baseline",
+      "effectiveFullIntent": true,
+      "evidenceExport": "complete",
+      "featuresMatch": true,
+      "finalAnswerManuallyChecked": true,
+      "finalAnswerMatchesSyntheticFacts": true,
+      "fixtureIntegrity": "unchanged",
+      "hostChangedAfterProposal": false,
+      "jevLedger": {
+        "attemptCalls": 0,
+        "invalidRecordFiles": 0,
+        "operations": 0,
+        "operationsDetail": [],
+        "serviceReady": true,
+        "storageComplete": true
+      },
+      "jevUsage": {
+        "calls": 0,
+        "estimatedUsd": 0.0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "knownEstimatedUsd": 0.004232555999999999,
+      "mechanicalAnswerHints": {
+        "GEN-42": true,
+        "ready": true
+      },
+      "modelUsage": {
+        "cacheReadTokens": 11776,
+        "cacheWriteTokens": 0,
+        "calls": 2,
+        "estimatedUsd": 0.004232555999999999,
+        "inputTokens": 5441,
+        "outputTokens": 2108
+      },
+      "nativeBash": {
+        "exitCode": 0,
+        "finalExitCode": 0,
+        "finalIsError": false,
+        "isError": false
+      },
+      "protectedExactBlocks": {
+        "first_line": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "4d98ce34a22971cca3589094b73b02e3f9b5dc56c4df689d45de0c7e205615eb"
+        },
+        "last_line": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "65e8a2f47a89755a68753495e28623993c5ddda931c3bf4bc5d25de006ed387d"
+        }
+      },
+      "recordedToolCalls": {
+        "bash": 1
+      },
+      "recovery": {
+        "completeFormattedRead": null,
+        "locatorPresent": false,
+        "nativeReadCalls": 0,
+        "nativeReadPages": 0,
+        "observedLines": null,
+        "originalExactSha256": null,
+        "savedOriginal": false,
+        "savedUtf8Bytes": null,
+        "totalLines": null
+      },
+      "structuralOk": true,
+      "termination": "normal",
+      "textLayers": {
+        "final": {
+          "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+          "unicodeCodePoints": 11229,
+          "utf8Bytes": 11229
+        },
+        "original": {
+          "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+          "unicodeCodePoints": 11229,
+          "utf8Bytes": 11229
+        },
+        "proposal": {
+          "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+          "unicodeCodePoints": 11229,
+          "utf8Bytes": 11229
+        }
+      },
+      "trialStatus": "completed",
+      "triggerClassification": "feature-disabled",
+      "usageComplete": true
+    },
+    {
+      "actualReplacements": {
+        "exactDuplicateRules": 0,
+        "jevSemantic": 0
+      },
+      "agentExecutionSeconds": 19.142715,
+      "case": "full-intent",
+      "condition": "log_admission",
+      "effectiveFullIntent": true,
+      "evidenceExport": "complete",
+      "featuresMatch": true,
+      "finalAnswerManuallyChecked": true,
+      "finalAnswerMatchesSyntheticFacts": true,
+      "fixtureIntegrity": "unchanged",
+      "hostChangedAfterProposal": false,
+      "jevLedger": {
+        "attemptCalls": 0,
+        "invalidRecordFiles": 0,
+        "operations": 0,
+        "operationsDetail": [],
+        "serviceReady": true,
+        "storageComplete": true
+      },
+      "jevUsage": {
+        "calls": 0,
+        "estimatedUsd": 0.0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "knownEstimatedUsd": 0.00550932,
+      "mechanicalAnswerHints": {
+        "GEN-42": true,
+        "ready": true
+      },
+      "modelUsage": {
+        "cacheReadTokens": 37120,
+        "cacheWriteTokens": 0,
+        "calls": 4,
+        "estimatedUsd": 0.00550932,
+        "inputTokens": 4646,
+        "outputTokens": 3244
+      },
+      "nativeBash": {
+        "exitCode": 0,
+        "finalExitCode": 0,
+        "finalIsError": false,
+        "isError": false
+      },
+      "protectedExactBlocks": {
+        "first_line": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "4d98ce34a22971cca3589094b73b02e3f9b5dc56c4df689d45de0c7e205615eb"
+        },
+        "last_line": {
+          "finalExact": true,
+          "proposalExact": true,
+          "sourceSha256": "65e8a2f47a89755a68753495e28623993c5ddda931c3bf4bc5d25de006ed387d"
+        }
+      },
+      "recordedToolCalls": {
+        "bash": 1,
+        "glob": 1,
+        "read": 1
+      },
+      "recovery": {
+        "completeFormattedRead": null,
+        "locatorPresent": false,
+        "nativeReadCalls": 0,
+        "nativeReadPages": 0,
+        "observedLines": null,
+        "originalExactSha256": null,
+        "savedOriginal": false,
+        "savedUtf8Bytes": null,
+        "totalLines": null
+      },
+      "structuralOk": true,
+      "termination": "normal",
+      "textLayers": {
+        "final": {
+          "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+          "unicodeCodePoints": 11229,
+          "utf8Bytes": 11229
+        },
+        "original": {
+          "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+          "unicodeCodePoints": 11229,
+          "utf8Bytes": 11229
+        },
+        "proposal": {
+          "sha256": "6b6e8dc2574f43b8702a18d7805c46ce480d23546e002e108faac745a04beaba",
+          "unicodeCodePoints": 11229,
+          "utf8Bytes": 11229
+        }
+      },
+      "trialStatus": "completed",
+      "triggerClassification": "effective-full-intent-bypass",
+      "usageComplete": true
+    }
+  ],
+  "suiteLockSha256": "762b7e2dee013886820cacf417f65ffee3522ce92d9c7d4ae7447d062c16a764"
+}
