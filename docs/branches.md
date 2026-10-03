@@ -19,7 +19,7 @@
 | `codex/jev-task-execution-checks` | Historical integrated hook snapshot / 监督纠正历史整合快照 |
 | `codex/jev-workspace-approval` | Accepted approval implementation, integrated in main / 已验收并合入的审批实现 |
 | `codex/jev-tool-output-admission` | Historical output/test-log filtering snapshot, integrated in main; includes an approval integration snapshot / 输出与测试日志筛选历史快照，已集成到main，含审批集成快照 |
-| `codex/jev-native-web-execution` | Paused experiment; ordinary-site effectiveness not accepted / 已暂停实验，正常网站效果未验收 |
+| `codex/jev-native-web-execution` | Paused experiment; ordinary-site effectiveness not accepted; [proposal](proposals/2026-09-27-jev-native-web-execution.md) / 已暂停实验，正常网站效果未验收；[提案](proposals/2026-09-27-jev-native-web-execution.zh-CN.md) |
 | `codex/jev-desktop-install-validation` | Historical validation baseline; no additional product implementation / 历史验证基线，无新增产品实现 |
 | `codex/jev-open-source-release` | Publication documentation and packaging metadata / 公开发布文档与打包元数据 |
 
